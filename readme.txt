@@ -25,9 +25,7 @@ Features include:
 
 For more information about this wordpress gallery plugin: <a href='http://wordpress-photo-gallery.com/' title='Responsive WordPress Photo Gallery'>ReFlex Gallery</a> - ReFlex Gallery Pro is a fully responsive WordPress image gallery plugin that is actually two galleries in one.
 
-Also try <a href='http://labs.hahncreativegroup.com/wordpress-plugins/easy-gallery/'>WP Easy Gallery Pro</a>
-
-<a href='http://wordpress-photo-gallery.com/' title='Responsive WordPress Photo Gallery'>ReFlex Gallery</a>
+Try <a href='http://wordpress-photo-gallery.com/' title='Responsive WordPress Photo Gallery'>ReFlex Gallery Pro</a>
 
 Pro features include:
 
