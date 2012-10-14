@@ -16,7 +16,7 @@ ReFlex Gallery is a fully responsive WordPress image gallery plugin that is actu
 
 Features include:
 
-- Responsive
+- Responsive galleries (works on smart devices)
 - Two gallery types in one
 - Include multiple galleries on a page/post
 - Set the 'sort order' of images in the galleries
@@ -77,6 +77,10 @@ Please consider a donation to the author of prettyPhoto in order to support the 
 * Click the 'Select Files' button
 * Choose the desired image to upload
 * After image has completed, click the 'Insert into post' button
+
+**Does ReFlex Gallery display galleries properly on smart phones?
+
+* Yes, both ReFlex Gallery and [ReFlex Gallery Pro](http://www.wordpress-photo-gallery.com) use responsive techniques to provide optimal smart device display.
 
 **Why can't I add galleries to my site?**
 
