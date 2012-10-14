@@ -78,7 +78,7 @@ Please consider a donation to the author of prettyPhoto in order to support the 
 * Choose the desired image to upload
 * After image has completed, click the 'Insert into post' button
 
-**Does ReFlex Gallery display galleries properly on smart phones?
+**Does ReFlex Gallery display galleries properly on smart phones?**
 
 * Yes, both ReFlex Gallery and [ReFlex Gallery Pro](http://www.wordpress-photo-gallery.com) use responsive techniques to provide optimal smart device display.
 
