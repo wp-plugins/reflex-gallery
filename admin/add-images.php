@@ -2,7 +2,7 @@
 if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); }
 
 //Add image
-if(isset($_POST['galleryId']) && !isset($_POST['switch_gallery'])) {
+if(isset($_POST['galleryId']) && !isset($_POST['switch_gallery']) && !isset($_POST['delete_image'])) {
 	$gid = $_POST['galleryId'];
 	$imagePath = mysql_real_escape_string($_POST['upload_image']);
 	$imageTitle = mysql_real_escape_string($_POST['image_title']);
