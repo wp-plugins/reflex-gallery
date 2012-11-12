@@ -1,19 +1,22 @@
 <?php
 if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); }
 
+
 //Add image
-if(isset($_POST['galleryId']) && !isset($_POST['switch_gallery']) && !isset($_POST['delete_image'])) {
-	$gid = $_POST['galleryId'];
-	$imagePath = mysql_real_escape_string($_POST['upload_image']);
-	$imageTitle = mysql_real_escape_string($_POST['image_title']);
-	$imageDescription = mysql_real_escape_string($_POST['image_description']);
-	$sortOrder = intval($_POST['image_sortOrder']);
-	$imageAdded = $this->reflexdb->addFullImage(intval($gid), $imagePath, $imageTitle, $imageDescription, $sortOrder);
-	
-	if($imageAdded) {
-	?>
-		<div class="updated"><p><strong><?php _e('Image saved.'); ?></strong></p></div>  
-	<?php }	
+if(isset($_POST['upload_image'])) {
+	if (!isset($_POST['switch']) && !isset($_POST['delete_image']) && !isset($_POST['edit_image'])) {
+	  $gid = $_POST['galleryId'];
+	  $imagePath = mysql_real_escape_string($_POST['upload_image']);
+	  $imageTitle = mysql_real_escape_string($_POST['image_title']);
+	  $imageDescription = mysql_real_escape_string($_POST['image_description']);
+	  $sortOrder = intval($_POST['image_sortOrder']);
+	  $imageAdded = $this->reflexdb->addFullImage(intval($gid), $imagePath, $imageTitle, $imageDescription, $sortOrder);
+	  
+	  if($imageAdded) {
+	  ?>
+		  <div class="updated"><p><strong><?php _e('Image saved.'); ?></strong></p></div>  
+	  <?php }
+	}
 }
 
 //Edit image
@@ -129,6 +132,7 @@ $galleryResults = $this->reflexdb->getGalleries();
             </tr>        	
         </tbody>
      </table>
+     </form>
     <hr />    
     <?php
 		if(count($imageResults) > 0) {
