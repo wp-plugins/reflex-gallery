@@ -1,7 +1,6 @@
 <?php
 if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); }
 
-
 //Add image
 if(isset($_POST['upload_image'])) {
 	if (!isset($_POST['switch']) && !isset($_POST['delete_image']) && !isset($_POST['edit_image'])) {
@@ -192,7 +191,6 @@ $galleryResults = $this->reflexdb->getGalleries();
 		}
 	?>
 
-
 <script src="<?php echo WP_PLUGIN_URL; ?>/reflex-gallery/admin/scripts/FileUploader/fileuploader.js" type="text/javascript"></script>
 <script src="<?php echo WP_PLUGIN_URL; ?>/reflex-gallery/scripts/prettyPhoto/jquery.prettyPhoto.js" type="text/javascript"></script>
 <script src="<?php echo WP_PLUGIN_URL; ?>/reflex-gallery/scripts/prettyPhoto/ReflexGalleryLoader.js" type="text/javascript"></script>
@@ -208,8 +206,7 @@ $galleryResults = $this->reflexdb->getGalleries();
 				},
                 debug: true
             });           
-        }
-        
+        }        
         // in your app create uploader as soon as the DOM is ready
         // don't wait for the window to load  
         window.onload = createUploader;		
