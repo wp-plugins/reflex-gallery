@@ -12,7 +12,7 @@ ReFlex Gallery is an easy to use responsive WordPress Gallery Plugin that is two
 
 ReFlex Gallery is a fully responsive WordPress image gallery plugin that is actually two galleries in one. ReFlex Gallery uses a FlexSlider style gallery for all mobile devices with a screen width of 480 pixels or less and dynamically creates prettyPhoto style galleries for all screen widths above 480 pixels. ReFlex Gallery allows for multiple galleries per page.
 
-[DEMO](http://wordpress-photo-gallery.com/)
+[DEMO](http://wordpress-photo-gallery.com/#gallery)
 
 Features include:
 
@@ -23,9 +23,9 @@ Features include:
 - WordPress ShortCodes for easy content integration
 - And much more...
 
-For more information about this wordpress gallery plugin: <a href='http://wordpress-photo-gallery.com/' title='Responsive WordPress Photo Gallery'>ReFlex Gallery</a> - ReFlex Gallery Pro is a fully responsive WordPress image gallery plugin that is actually two galleries in one.
+For more information about this wordpress gallery plugin: <a href='http://wordpress-photo-gallery.com/#gallery' title='Responsive WordPress Photo Gallery'>ReFlex Gallery</a> - ReFlex Gallery Pro is a fully responsive WordPress image gallery plugin that is actually two galleries in one.
 
-Try <a href='http://wordpress-photo-gallery.com/' title='Responsive WordPress Photo Gallery'>ReFlex Gallery Pro</a>
+Try <a href='http://wordpress-photo-gallery.com/#gallery' title='Responsive WordPress Photo Gallery'>ReFlex Gallery Pro</a>
 
 Pro features include:
 
