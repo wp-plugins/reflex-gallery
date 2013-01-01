@@ -1,14 +1,14 @@
 <?php
 /**
  * @package ReFlex_Gallery
- * @version 1.3
+ * @version 1.4
  */
 /*
 Plugin Name: ReFlex Gallery
 Plugin URI: http://wordpress-photo-gallery.com/
 Description: Wordpress Plugin for creating responsive image galleries. By: HahnCreativeGroup
 Author: HahnCreativeGroup
-Version: 1.3
+Version: 1.4
 Author URI: http://labs.hahncreativegroup.com/
 */
 if (!class_exists("ReFlex_Gallery")) {
@@ -85,7 +85,7 @@ if (!class_exists("ReFlex_Gallery")) {
 		public function add_gallery_scripts() {
 			wp_enqueue_script('jquery');
 			wp_register_script('flexSlider', WP_PLUGIN_URL.'/reflex-gallery/scripts/flexslider/jquery.flexslider-min.js', array('jquery'));
-			wp_register_script('prettyPhoto', WP_PLUGIN_URL.'/reflex-gallery/scripts/prettyPhoto/jquery.prettyPhoto.js', array('jquery'));
+			wp_register_script('prettyPhoto', WP_PLUGIN_URL.'/reflex-gallery/scripts/prettyphoto/jquery.prettyPhoto.js', array('jquery'));
 			wp_register_script('galleryManager', WP_PLUGIN_URL.'/reflex-gallery/scripts/galleryManager.min.js', array('flexSlider', 'prettyPhoto', 'jquery'));
 			wp_enqueue_script('flexSlider');
 			wp_enqueue_script('prettyPhoto');
@@ -99,7 +99,7 @@ if (!class_exists("ReFlex_Gallery")) {
 		//Admin Section - register scripts and styles
 		public function gallery_admin_init() {
 			wp_register_style( 'table_pager_stylesheet', WP_PLUGIN_URL.'/reflex-gallery/admin/scripts/TablePagination/tablePager.css');
-			wp_register_style( 'prettyPhoto_admin_stylesheet', WP_PLUGIN_URL.'/reflex-gallery/scripts/prettyPhoto/prettyPhoto.css');
+			wp_register_style( 'prettyPhoto_admin_stylesheet', WP_PLUGIN_URL.'/reflex-gallery/scripts/prettyphoto/prettyPhoto.css');
 		}
 		
 		public function add_default_media_uploader() {
