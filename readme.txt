@@ -109,3 +109,7 @@ Keywords: <a href='http://labs.hahncreativegroup.com/wordpress-gallery-plugin/' 
 **Jan. 1, 2013 - v1.4**
 
 * Fixed directory naming issue that caused problems with prettyPhoto scripts in some hosting environments.
+
+**Jan. 13, 2013 - v1.4.1**
+
+* Fixed additional directory naming issue that caused problems with prettyPhoto styles in some hosting environments.
