@@ -1,14 +1,14 @@
 <?php
 /**
  * @package ReFlex_Gallery
- * @version 1.4.1
+ * @version 1.4.2
  */
 /*
 Plugin Name: ReFlex Gallery
 Plugin URI: http://wordpress-photo-gallery.com/
 Description: Wordpress Plugin for creating responsive image galleries. By: HahnCreativeGroup
 Author: HahnCreativeGroup
-Version: 1.4.1
+Version: 1.4.2
 Author URI: http://labs.hahncreativegroup.com/
 */
 if (!class_exists("ReFlex_Gallery")) {
@@ -82,8 +82,10 @@ if (!class_exists("ReFlex_Gallery")) {
 		}
 		
 		//Add gallery scripts
-		public function add_gallery_scripts() {
+		public function add_gallery_scripts() {			
 			wp_enqueue_script('jquery');
+			wp_register_script('jquery_migrate', 'http://code.jquery.com/jquery-migrate-1.1.1.js', array('jquery'));
+			wp_enqueue_script('jquery_migrate');
 			wp_register_script('flexSlider', WP_PLUGIN_URL.'/reflex-gallery/scripts/flexslider/jquery.flexslider-min.js', array('jquery'));
 			wp_register_script('prettyPhoto', WP_PLUGIN_URL.'/reflex-gallery/scripts/prettyphoto/jquery.prettyPhoto.js', array('jquery'));
 			wp_register_script('galleryManager', WP_PLUGIN_URL.'/reflex-gallery/scripts/galleryManager.min.js', array('flexSlider', 'prettyPhoto', 'jquery'));
