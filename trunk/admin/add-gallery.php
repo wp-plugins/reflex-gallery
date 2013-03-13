@@ -40,7 +40,7 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
 	if($galleryAdded) {
 	?>
     <div class="updated"><p><?php _e('Copy and paste this code into the page or post that you would like to display the gallery.', 'reflex-gallery'); ?></p>
-    <p><input type="text" name="galleryCode" value="[ReflexGallery id='<?php echo $this->reflexdb->getNewGalleryId(); ?>']" size="40" /></p></div>
+    <p><input type="text" name="galleryCode" value="[ReflexGallery id='<?php _e($this->reflexdb->getNewGalleryId()); ?>']" size="40" /></p></div>
     <?php }
 	else {
 	?>
@@ -67,22 +67,22 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
         <tbody>
         	<tr>
             	<td><strong><?php _e('Enter Gallery Name', 'reflex-gallery'); ?>:</strong></td>
-                <td><input type="text" size="30" name="galleryName" value="<?php echo $galleryName; ?>" /></td>
+                <td><input type="text" size="30" name="galleryName" value="<?php _e($galleryName); ?>" /></td>
                 <td><?php _e('This name is the internal name for the gallery.<br />Please avoid non-letter characters such as', 'reflex-gallery'); ?> ', ", *, etc.</td>
             </tr>
             <tr>
             	<td><strong><?php _e('Enter Gallery Description', 'reflex-gallery'); ?>:</strong></td>
-                <td><input type="text" size="50" name="galleryDescription" value="<?php echo $galleryDescription; ?>" /></td>
+                <td><input type="text" size="50" name="galleryDescription" value="<?php _e($galleryDescription); ?>" /></td>
                 <td><?php _e('This description is for internal use.', 'reflex-gallery'); ?></td>
             </tr>            
             <tr>
             	<td><strong><?php _e('Enter Thumbnail Width', 'reflex-gallery'); ?>:</strong></td>
-                <td><input type="text" size="10" name="gallerythumbwidth" value="<?php echo $thumbwidth; ?>" /></td>
+                <td><input type="text" size="10" name="gallerythumbwidth" value="<?php _e($thumbwidth); ?>" /></td>
                 <td><?php _e('This is the width of the gallery thumbnail image.', 'reflex-gallery'); ?></td>
             </tr>
             <tr>
             	<td><strong><?php _e('Enter Thumbnail Height', 'reflex-gallery'); ?>:</strong></td>
-                <td><input type="text" size="10" name="gallerythumbheight" value="<?php echo $thumbheight; ?>" /></td>
+                <td><input type="text" size="10" name="gallerythumbheight" value="<?php _e($thumbheight); ?>" /></td>
                 <td><?php _e('This is the height of the gallery thumbnail image.', 'reflex-gallery'); ?></td>
             </tr>
             <tr>
@@ -128,7 +128,7 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
             <td>
             	<ul>
                 	<li><a href="http://wordpress-photo-gallery.com/?src=rg" target="_blank">ReFlex Gallery Pro</li>
-                    <li><a href="http://labs.hahncreativegroup.com/wordpress-plugins/wp-easy-gallery-pro-simple-wordpress-gallery-plugin/?src=gr" target="_blank">WP Easy Gallery Pro</a></li>
+                    <li><a href="http://labs.hahncreativegroup.com/wordpress-plugins/wp-easy-gallery-pro-simple-wordpress-gallery-plugin/?src=rg" target="_blank">WP Easy Gallery Pro</a></li>
                     <li><a href="http://wordpress.org/extend/plugins/custom-post-donations/" target="_blank">Custom Post Donations</a></li>
                     <li><a href="http://wordpress.org/extend/plugins/wp-translate/" target="_blank">WP Translate</a></li>
                 </ul>
