@@ -56,13 +56,13 @@ if(isset($_POST['easy_gallery_edit']))
 			foreach($galleryResults as $gallery) {
 				?>
                 <tr>
-                	<td><?php echo $gallery->name; ?></td>
-                    <td><?php echo $gallery->description; ?></td>
+                	<td><?php _e($gallery->name); ?></td>
+                    <td><?php _e($gallery->description); ?></td>
                     <td></td>
                     <td>
                     	<form name="select_gallery_form" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>" method="post">
-                    	<input type="hidden" name="galleryId" value="<?php echo $gallery->Id; ?>" />
-                        <input type="hidden" name="galleryName" value="<?php echo $gallery->name; ?>" />
+                    	<input type="hidden" name="galleryId" value="<?php _e($gallery->Id); ?>" />
+                        <input type="hidden" name="galleryName" value="<?php _e($gallery->name); ?>" />
                         <input type="submit" name="Submit" class="button-primary" value="<?php _e('Select Gallery', 'reflex-gallery'); ?>" />
                 		</form>
                     </td>
@@ -74,7 +74,7 @@ if(isset($_POST['easy_gallery_edit']))
 </table>
     
     <?php } else if(isset($_POST['select_gallery']) || isset($_POST['galleryId'])) { ?>    
-    <h3>Gallery: <?php echo $gallery->name; ?></h3>
+    <h3>Gallery: <?php _e($gallery->name); ?></h3>
     <form name="switch_gallery" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
     <input type="hidden" name="switch" value="true" />
     <p><input type="submit" name="Submit" class="button-primary" value="<?php _e('Switch Gallery', 'reflex-gallery'); ?>" /></p>
@@ -83,7 +83,7 @@ if(isset($_POST['easy_gallery_edit']))
     <p><?php _e('Click "Save Changes" after making changes', 'reflex-gallery'); ?></p>
     
     <form name="edit_gallery_form" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>" method="post">
-    <input type="hidden" name="easy_gallery_edit" value="<?php echo $gid; ?>" />
+    <input type="hidden" name="easy_gallery_edit" value="<?php _e($gid); ?>" />
     <table class="widefat post fixed" cellspacing="0">
     	<thead>
         <tr>
@@ -102,12 +102,12 @@ if(isset($_POST['easy_gallery_edit']))
         <tbody>
         	<tr>
             	<td><strong><?php _e('Enter Gallery Name', 'reflex-gallery'); ?>:</strong></td>
-                <td><input type="text" size="30" name="galleryName" value="<?php echo $gallery->name; ?>" /></td>
+                <td><input type="text" size="30" name="galleryName" value="<?php _e($gallery->name); ?>" /></td>
                 <td><?php _e('This name is the internal name for the gallery.', 'reflex-gallery'); ?><br /><?php _e('Please avoid non-letter characters such as', 'reflex-gallery'); ?> ', ", *, etc.</td>
             </tr>
             <tr>
             	<td><strong><?php _e('Enter Gallery Description', 'reflex-gallery'); ?>:</strong></td>
-                <td><input type="text" size="50" name="galleryDescription" value="<?php echo $gallery->description; ?>" /></td>
+                <td><input type="text" size="50" name="galleryDescription" value="<?php _e($gallery->description); ?>" /></td>
                 <td><?php _e('This description is for internal use.', 'reflex-gallery'); ?></td>
             </tr>
             <tr>
@@ -164,7 +164,7 @@ if(isset($_POST['easy_gallery_edit']))
             <td>
             	<ul>
                 	<li><a href="http://wordpress-photo-gallery.com/?src=rg" target="_blank">ReFlex Gallery Pro</li>
-                    <li><a href="http://labs.hahncreativegroup.com/wordpress-plugins/wp-easy-gallery-pro-simple-wordpress-gallery-plugin/?src=gr" target="_blank">WP Easy Gallery Pro</a></li>
+                    <li><a href="http://labs.hahncreativegroup.com/wordpress-plugins/wp-easy-gallery-pro-simple-wordpress-gallery-plugin/?src=grrg" target="_blank">WP Easy Gallery Pro</a></li>
                     <li><a href="http://wordpress.org/extend/plugins/custom-post-donations/" target="_blank">Custom Post Donations</a></li>
                     <li><a href="http://wordpress.org/extend/plugins/wp-translate/" target="_blank">WP Translate</a></li>
                 </ul>

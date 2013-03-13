@@ -47,12 +47,12 @@ $default_options = get_option('reflex_gallery_options');
         <tbody>
         	<?php foreach($galleryResults as $gallery) { ?>				
             <tr>
-            	<td><?php echo $gallery->name; ?></td>
-                <td><input type="text" size="40" value="[ReflexGallery id='<?php echo $gallery->Id; ?>']" /></td>
-                <td><?php echo $gallery->description; ?></td>
+            	<td><?php _e($gallery->name); ?></td>
+                <td><input type="text" size="40" value="[ReflexGallery id='<?php _e($gallery->Id); ?>']" /></td>
+                <td><?php _e($gallery->description); ?></td>
                 <td class="major-publishing-actions">
-                <form name="delete_gallery_<?php echo $gallery->Id; ?>" method ="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
-                	<input type="hidden" name="galleryId" value="<?php echo $gallery->Id; ?>" />
+                <form name="delete_gallery_<?php _e($gallery->Id); ?>" method ="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
+                	<input type="hidden" name="galleryId" value="<?php _e($gallery->Id); ?>" />
                     <input type="submit" name="Submit" class="button-primary" value="<?php _e('Delete Gallery', 'reflex-gallery'); ?>" />
                 </form>
                 </td>
@@ -77,12 +77,12 @@ $default_options = get_option('reflex_gallery_options');
         <tbody>
         	<tr>
             	<td><?php _e('Default Thumbnail Width', 'reflex-gallery'); ?></td>
-                <td><input name="default_width" id="default_width" value="<?php echo $default_options[1]['thumbnail_width']; ?>" /> px</td>
+                <td><input name="default_width" id="default_width" value="<?php _e($default_options[1]['thumbnail_width']); ?>" /> px</td>
                 <td><?php _e('This is the default width (in pixels) of all of the gallery thumbnail images.<br />(This property can be overwritten when creating individual galleries.)', 'reflex-gallery'); ?></td>
             </tr>
             <tr>
             	<td><?php _e('Default Thumbnail Height', 'reflex-gallery'); ?></td>
-                <td><input name="default_height" id="default_height" value="<?php echo $default_options[1]['thumbnail_height']; ?>" /> px</td>
+                <td><input name="default_height" id="default_height" value="<?php _e($default_options[1]['thumbnail_height']); ?>" /> px</td>
                 <td><?php _e('This is the default height (in pixels) of all of the gallery thumbnail images.<br />(This property can be overwritten when creating individual galleries.)', 'reflex-gallery'); ?></td>
             </tr>
             <tr>
@@ -131,7 +131,7 @@ $default_options = get_option('reflex_gallery_options');
             <td>
             	<ul>
                 	<li><a href="http://wordpress-photo-gallery.com/?src=rg" target="_blank">ReFlex Gallery Pro</li>
-                    <li><a href="http://labs.hahncreativegroup.com/wordpress-plugins/wp-easy-gallery-pro-simple-wordpress-gallery-plugin/?src=gr" target="_blank">WP Easy Gallery Pro</a></li>
+                    <li><a href="http://labs.hahncreativegroup.com/wordpress-plugins/wp-easy-gallery-pro-simple-wordpress-gallery-plugin/?src=rg" target="_blank">WP Easy Gallery Pro</a></li>
                     <li><a href="http://wordpress.org/extend/plugins/custom-post-donations/" target="_blank">Custom Post Donations</a></li>
                     <li><a href="http://wordpress.org/extend/plugins/wp-translate/" target="_blank">WP Translate</a></li>
                 </ul>

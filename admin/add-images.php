@@ -4,12 +4,12 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
 //Add image
 if(isset($_POST['upload_image'])) {
 	if (!isset($_POST['switch']) && !isset($_POST['delete_image']) && !isset($_POST['edit_image'])) {
-	  $gid = $_POST['galleryId'];
+	  $gid = intval($_POST['galleryId']);
 	  $imagePath = mysql_real_escape_string($_POST['upload_image']);
 	  $imageTitle = mysql_real_escape_string($_POST['image_title']);
 	  $imageDescription = mysql_real_escape_string($_POST['image_description']);
 	  $sortOrder = intval($_POST['image_sortOrder']);
-	  $imageAdded = $this->reflexdb->addFullImage(intval($gid), $imagePath, $imageTitle, $imageDescription, $sortOrder);
+	  $imageAdded = $this->reflexdb->addFullImage($gid, $imagePath, $imageTitle, $imageDescription, $sortOrder);
 	  
 	  if($imageAdded) {
 	  ?>
@@ -82,13 +82,13 @@ $galleryResults = $this->reflexdb->getGalleries();
 			foreach($galleryResults as $gallery) {
 				?>
                 <tr>
-                	<td><?php echo $gallery->name; ?></td>
-                    <td><?php echo $gallery->description; ?></td>
+                	<td><?php _e($gallery->name); ?></td>
+                    <td><?php _e($gallery->description); ?></td>
                     <td></td>
                     <td>
                     	<form name="select_gallery_form" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>" method="post">
-                    	<input type="hidden" name="galleryId" value="<?php echo $gallery->Id; ?>" />
-                        <input type="hidden" name="galleryName" value="<?php echo $gallery->name; ?>" />
+                    	<input type="hidden" name="galleryId" value="<?php _e($gallery->Id); ?>" />
+                        <input type="hidden" name="galleryName" value="<?php _e($gallery->name); ?>" />
                         <input type="submit" name="Submit" class="button-primary" value="<?php _e('Select Gallery', 'reflex-gallery'); ?>" />
                 		</form>
                     </td>
@@ -100,7 +100,7 @@ $galleryResults = $this->reflexdb->getGalleries();
 </table>
 <?php } else { ?>
     <form name="add_image_form" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>" method="post">
-    <input type="hidden" name="galleryId" value="<?php echo $gallery->Id; ?>" />
+    <input type="hidden" name="galleryId" value="<?php _e($gallery->Id); ?>" />
     <table class="widefat post fixed" cellspacing="0">
     	<thead>
         <tr>
@@ -136,7 +136,8 @@ $galleryResults = $this->reflexdb->getGalleries();
     <?php
 		if(count($imageResults) > 0) {
 		?>
-        	<h3><?php _e('Gallery Images', 'reflex-gallery'); ?>: <?php echo $gallery->name; ?></h3>
+        	<?php $GalleryId = $_POST['galleryId']; ?>
+            <h3><?php _e('Gallery Images', 'reflex-gallery'); ?>: <?php _e($gallery->name); ?></h3>
             <form name="switch_gallery" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
             <input type="hidden" name="switch" value="true" />
             <p><input type="submit" name="Submit" class="button-primary" value="<?php _e('Switch Gallery', 'reflex-gallery'); ?>" /></p>
@@ -162,15 +163,15 @@ $galleryResults = $this->reflexdb->getGalleries();
         <tbody>        	
         	<?php foreach($imageResults as $image) { ?>				
             <tr>
-            	<td><a onclick="var images=['<?php echo $image->imagePath; ?>']; var titles=['<?php echo $image->title; ?>']; var descriptions=['<?php echo $image->description; ?>']; jQuery.prettyPhoto.open(images,titles,descriptions);" style="cursor: pointer;"><img src="<?php echo $image->imagePath; ?>" width="75" border="0" /></a><br /><i><?php _e('Click to preview', 'reflex-gallery'); ?></i></td>
+            	<td><a onclick="var images=['<?php _e($image->imagePath); ?>']; var titles=['<?php _e($image->title); ?>']; var descriptions=['<?php _e($image->description); ?>']; jQuery.prettyPhoto.open(images,titles,descriptions);" style="cursor: pointer;"><img src="<?php _e($image->imagePath); ?>" width="75" border="0" /></a><br /><i><?php _e('Click to preview', 'reflex-gallery'); ?></i></td>
                 <td>
                 	<form name="edit_image_form" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>" method="post">
-                    <input type="hidden" name="galleryId" value="<?php echo $_POST['galleryId']; ?>" />
-                	<input type="hidden" name="edit_image" value="<?php echo $image->Id; ?>" />                    
-                	<p><strong><?php _e('Image Path', 'reflex-gallery'); ?>:</strong> <input type="text" name="edit_imagePath" size="75" value="<?php echo $image->imagePath; ?>" /></p>
-                    <p><strong><?php _e('Image Title', 'reflex-gallery'); ?>:</strong> <input type="text" name="edit_imageTitle" size="20" value="<?php echo $image->title; ?>" /></p>
-                    <p><strong><?php _e('Image Description', 'reflex-gallery'); ?>:</strong> <input type="text" name="edit_imageDescription" size="75" value="<?php echo $image->description; ?>" /></p>
-                    <p><strong><?php _e('Sort Order', 'reflex-gallery'); ?>:</strong> <input type="text" name="edit_imageSort" size="10" value="<?php echo $image->sortOrder; ?>" /></p>
+                    <input type="hidden" name="galleryId" value="<?php _e($GalleryId); ?>" />
+                	<input type="hidden" name="edit_image" value="<?php _e($image->Id); ?>" />                    
+                	<p><strong><?php _e('Image Path', 'reflex-gallery'); ?>:</strong> <input type="text" name="edit_imagePath" size="75" value="<?php _e($image->imagePath); ?>" /></p>
+                    <p><strong><?php _e('Image Title', 'reflex-gallery'); ?>:</strong> <input type="text" name="edit_imageTitle" size="20" value="<?php _e($image->title); ?>" /></p>
+                    <p><strong><?php _e('Image Description', 'reflex-gallery'); ?>:</strong> <input type="text" name="edit_imageDescription" size="75" value="<?php _e($image->description); ?>" /></p>
+                    <p><strong><?php _e('Sort Order', 'reflex-gallery'); ?>:</strong> <input type="text" name="edit_imageSort" size="10" value="<?php _e($image->sortOrder); ?>" /></p>
                 </td>
                 <td class="major-publishing-actions">                
                 <input type="submit" name="Submit" class="button-primary" value="<?php _e('Edit Image', 'reflex-gallery'); ?>" />
@@ -178,8 +179,8 @@ $galleryResults = $this->reflexdb->getGalleries();
                 </td>
                 <td class="major-publishing-actions">
                 <form name="delete_image_form" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>" method="post">
-                <input type="hidden" name="galleryId" value="<?php echo $_POST['galleryId']; ?>" />
-                <input type="hidden" name="delete_image" value="<?php echo $image->Id; ?>" />
+                <input type="hidden" name="galleryId" value="<?php _e($GalleryId); ?>" />
+                <input type="hidden" name="delete_image" value="<?php _e($image->Id); ?>" />
                 <input type="submit" name="Submit" class="button-primary" value="<?php _e('Delete Image', 'reflex-gallery'); ?>" />
                 </form>
                 </td>
@@ -247,7 +248,7 @@ $galleryResults = $this->reflexdb->getGalleries();
             <td>
             	<ul>
                 	<li><a href="http://wordpress-photo-gallery.com/?src=rg" target="_blank">ReFlex Gallery Pro</li>
-                    <li><a href="http://labs.hahncreativegroup.com/wordpress-plugins/wp-easy-gallery-pro-simple-wordpress-gallery-plugin/?src=gr" target="_blank">WP Easy Gallery Pro</a></li>
+                    <li><a href="http://labs.hahncreativegroup.com/wordpress-plugins/wp-easy-gallery-pro-simple-wordpress-gallery-plugin/?src=rg" target="_blank">WP Easy Gallery Pro</a></li>
                     <li><a href="http://wordpress.org/extend/plugins/custom-post-donations/" target="_blank">Custom Post Donations</a></li>
                     <li><a href="http://wordpress.org/extend/plugins/wp-translate/" target="_blank">WP Translate</a></li>
                 </ul>
