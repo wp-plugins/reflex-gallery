@@ -452,3 +452,9 @@
 	* html .clearfix {height: 1%;}
 	.clearfix {display: block;}
 	/* End hide from IE-mac */
+	
+	/* Added 3-13-2013 */
+.pp_gallery div{overflow:hidden;float:left;}
+a.pp_arrow_next{display:inline;float:right;height:15px;margin-top:3px;overflow:hidden;text-indent:-10000px;width:14px}
+a.pp_arrow_previous{display:inline;float:left;height:15px;margin-top:3px;overflow:hidden;text-indent:-10000px;width:14px}
+.pp_gallery{left:50%;margin-top:-50px;position:absolute;z-index:10000}
