@@ -13,24 +13,26 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
 	if(isset($_POST['add_gallery']))
 	{
 		if($_POST['galleryName'] != "") {
-		  $galleryName = mysql_real_escape_string($_POST['galleryName']);
-		  $galleryDescription = mysql_real_escape_string($_POST['galleryDescription']);	  
-		  $slug = strtolower(str_replace(" ", "", $galleryName));
-		  $thumbwidth = intval($_POST['gallerythumbwidth']);
-		  $thumbheight = intval($_POST['gallerythumbheight']);		  
-		  
-		  $galleryAdded = $this->reflexdb->addGallery($galleryName, $slug, $galleryDescription, $thumbwidth, $thumbheight);
-		  
-		  if($galleryAdded) {
-		  ?>  
-		  <div class="updated"><p><strong><?php _e('Gallery Added.', 'reflex-gallery' ); ?></strong></p></div>  
-		  <?php
-		  }
-		}
-		else {
+		  if(check_admin_referer('reflex_gallery','reflex_gallery')) {
+			$galleryName = mysql_real_escape_string($_POST['galleryName']);
+			$galleryDescription = mysql_real_escape_string($_POST['galleryDescription']);	  
+			$slug = strtolower(str_replace(" ", "", $galleryName));
+			$thumbwidth = intval($_POST['gallerythumbwidth']);
+			$thumbheight = intval($_POST['gallerythumbheight']);		  
+			
+			$galleryAdded = $this->reflexdb->addGallery($galleryName, $slug, $galleryDescription, $thumbwidth, $thumbheight);
+			
+			if($galleryAdded) {
 			?>  
-		  <div class="updated"><p><strong><?php _e('Please enter a gallery name.', 'reflex-gallery' ); ?></strong></p></div>  
-		  <?php
+			<div class="updated"><p><strong><?php _e('Gallery Added.', 'reflex-gallery' ); ?></strong></p></div>  
+			<?php
+			}
+		  }
+		  else {
+			  ?>  
+			<div class="updated"><p><strong><?php _e('Please enter a gallery name.', 'reflex-gallery' ); ?></strong></p></div>  
+			<?php
+		  }
 		}
 	}
 ?>
@@ -48,6 +50,7 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
     <?php } ?>
 	
     <form name="add_gallery_form" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>" method="post">
+    <?php wp_nonce_field('reflex_gallery', 'reflex_gallery'); ?>
     <input type="hidden" name="add_gallery" value="true" />
     <table class="widefat post fixed" cellspacing="0">
     	<thead>

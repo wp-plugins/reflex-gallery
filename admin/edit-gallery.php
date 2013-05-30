@@ -5,27 +5,31 @@ $galleryResults = $this->reflexdb->getGalleries();
 
 //Select gallery
 if(isset($_POST['select_gallery']) || isset($_POST['galleryId'])) {
-	$gid = (isset($_POST['select_gallery'])) ? intval(mysql_real_escape_string($_POST['select_gallery'])) : intval(mysql_real_escape_string($_POST['galleryId']));	
-	
-	$imageResults = $this->reflexdb->getImagesByGalleryId($gid);
-	$gallery = $this->reflexdb->getGalleryById($gid);
+	if(check_admin_referer('reflex_gallery','reflex_gallery')) {
+	  $gid = (isset($_POST['select_gallery'])) ? intval(mysql_real_escape_string($_POST['select_gallery'])) : intval(mysql_real_escape_string($_POST['galleryId']));	
+	  
+	  $imageResults = $this->reflexdb->getImagesByGalleryId($gid);
+	  $gallery = $this->reflexdb->getGalleryById($gid);
+	}
 }
 	
 if(isset($_POST['easy_gallery_edit']))
 {
 	if($_POST['galleryName'] != "") {
-	  $editId = intval($_POST['easy_gallery_edit']);
-	  $galleryName = mysql_real_escape_string($_POST['galleryName']);
-	  $galleryDescription = mysql_real_escape_string($_POST['galleryDescription']);	  
-	  $slug = strtolower(str_replace(" ", "", $galleryName));
-	  $thumbwidth = intval($_POST['gallerythumbwidth']);
-	  $thumbheight = intval($_POST['gallerythumbheight']);
-	  
-	  if(isset($_POST['easy_gallery_edit'])) {		  
-		  $galleryEdited = $this->reflexdb->editGallery($editId, $galleryName, $slug, $galleryDescription, $thumbwidth, $thumbheight);
-		  ?>  
-		  <div class="updated"><p><strong><?php _e('Gallery has been edited.', 'reflex-gallery' ); ?></strong></p></div>  
-		  <?php
+	  if(check_admin_referer('reflex_gallery','reflex_gallery')) {
+		$editId = intval($_POST['easy_gallery_edit']);
+		$galleryName = mysql_real_escape_string($_POST['galleryName']);
+		$galleryDescription = mysql_real_escape_string($_POST['galleryDescription']);	  
+		$slug = strtolower(str_replace(" ", "", $galleryName));
+		$thumbwidth = intval($_POST['gallerythumbwidth']);
+		$thumbheight = intval($_POST['gallerythumbheight']);
+		
+		if(isset($_POST['easy_gallery_edit'])) {		  
+			$galleryEdited = $this->reflexdb->editGallery($editId, $galleryName, $slug, $galleryDescription, $thumbwidth, $thumbheight);
+			?>  
+			<div class="updated"><p><strong><?php _e('Gallery has been edited.', 'reflex-gallery' ); ?></strong></p></div>  
+			<?php
+		}
 	  }
 	}
 }
@@ -61,7 +65,8 @@ if(isset($_POST['easy_gallery_edit']))
                     <td></td>
                     <td>
                     	<form name="select_gallery_form" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>" method="post">
-                    	<input type="hidden" name="galleryId" value="<?php _e($gallery->Id); ?>" />
+                    	<?php wp_nonce_field('reflex_gallery', 'reflex_gallery'); ?>
+                        <input type="hidden" name="galleryId" value="<?php _e($gallery->Id); ?>" />
                         <input type="hidden" name="galleryName" value="<?php _e($gallery->name); ?>" />
                         <input type="submit" name="Submit" class="button-primary" value="<?php _e('Select Gallery', 'reflex-gallery'); ?>" />
                 		</form>
@@ -76,6 +81,7 @@ if(isset($_POST['easy_gallery_edit']))
     <?php } else if(isset($_POST['select_gallery']) || isset($_POST['galleryId'])) { ?>    
     <h3>Gallery: <?php _e($gallery->name); ?></h3>
     <form name="switch_gallery" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
+    <?php wp_nonce_field('reflex_gallery', 'reflex_gallery'); ?>
     <input type="hidden" name="switch" value="true" />
     <p><input type="submit" name="Submit" class="button-primary" value="<?php _e('Switch Gallery', 'reflex-gallery'); ?>" /></p>
     </form>
@@ -83,6 +89,7 @@ if(isset($_POST['easy_gallery_edit']))
     <p><?php _e('Click "Save Changes" after making changes', 'reflex-gallery'); ?></p>
     
     <form name="edit_gallery_form" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>" method="post">
+    <?php wp_nonce_field('reflex_gallery', 'reflex_gallery'); ?>
     <input type="hidden" name="easy_gallery_edit" value="<?php _e($gid); ?>" />
     <table class="widefat post fixed" cellspacing="0">
     	<thead>

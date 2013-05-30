@@ -4,52 +4,60 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
 //Add image
 if(isset($_POST['upload_image'])) {
 	if (!isset($_POST['switch']) && !isset($_POST['delete_image']) && !isset($_POST['edit_image'])) {
-	  $gid = intval($_POST['galleryId']);
-	  $imagePath = mysql_real_escape_string($_POST['upload_image']);
-	  $imageTitle = mysql_real_escape_string($_POST['image_title']);
-	  $imageDescription = mysql_real_escape_string($_POST['image_description']);
-	  $sortOrder = intval($_POST['image_sortOrder']);
-	  $imageAdded = $this->reflexdb->addFullImage($gid, $imagePath, $imageTitle, $imageDescription, $sortOrder);
-	  
-	  if($imageAdded) {
-	  ?>
-		  <div class="updated"><p><strong><?php _e('Image saved.'); ?></strong></p></div>  
-	  <?php }
+	  if(check_admin_referer('reflex_gallery','reflex_gallery')) {
+		$gid = intval($_POST['galleryId']);
+		$imagePath = mysql_real_escape_string($_POST['upload_image']);
+		$imageTitle = mysql_real_escape_string($_POST['image_title']);
+		$imageDescription = mysql_real_escape_string($_POST['image_description']);
+		$sortOrder = intval($_POST['image_sortOrder']);
+		$imageAdded = $this->reflexdb->addFullImage($gid, $imagePath, $imageTitle, $imageDescription, $sortOrder);
+		
+		if($imageAdded) {
+		?>
+			<div class="updated"><p><strong><?php _e('Image saved.'); ?></strong></p></div>  
+		<?php }
+	 }
 	}
 }
 
 //Edit image
 if(isset($_POST['edit_image'])) {	
-	$id = intval($_POST['edit_image']);
-	$image = mysql_real_escape_string($_POST['edit_imagePath']);
-	$imageTitle = mysql_real_escape_string($_POST['edit_imageTitle']);
-	$imageDescription = mysql_real_escape_string($_POST['edit_imageDescription']);
-	$sortOrder = intval(0 + $_POST['edit_imageSort']);	
-	
-	$imageEdited = $this->reflexdb->editImage($id, $image, $imageTitle, $imageDescription, $sortOrder)
-		
-	?>  
-	<div class="updated"><p><strong><?php _e('Image has been edited.', 'reflex-gallery'); ?></strong></p></div>  
-	<?php
+	if(check_admin_referer('reflex_gallery','reflex_gallery')) {
+	  $id = intval($_POST['edit_image']);
+	  $image = mysql_real_escape_string($_POST['edit_imagePath']);
+	  $imageTitle = mysql_real_escape_string($_POST['edit_imageTitle']);
+	  $imageDescription = mysql_real_escape_string($_POST['edit_imageDescription']);
+	  $sortOrder = intval(0 + $_POST['edit_imageSort']);	
+	  
+	  $imageEdited = $this->reflexdb->editImage($id, $image, $imageTitle, $imageDescription, $sortOrder)
+		  
+	  ?>  
+	  <div class="updated"><p><strong><?php _e('Image has been edited.', 'reflex-gallery'); ?></strong></p></div>  
+	  <?php
+	}
 }
 
 // Delete image
 if(isset($_POST['delete_image'])) {	
-	$imageId = intval($_POST['delete_image']);
-	$this->reflexdb->deleteImage($imageId);
-	$galleryId = intval($_POST['galleryId']);
-	$imageResults = $this->reflexdb->getImagesByGalleryId($galleryId);
-		
-	?>  
-	<div class="updated"><p><strong><?php _e('Image has been deleted.', 'reflex-gallery'); ?></strong></p></div>  
-	<?php	
+	if(check_admin_referer('reflex_gallery','reflex_gallery')) {
+	  $imageId = intval($_POST['delete_image']);
+	  $this->reflexdb->deleteImage($imageId);
+	  $galleryId = intval($_POST['galleryId']);
+	  $imageResults = $this->reflexdb->getImagesByGalleryId($galleryId);
+		  
+	  ?>  
+	  <div class="updated"><p><strong><?php _e('Image has been deleted.', 'reflex-gallery'); ?></strong></p></div>  
+	  <?php
+	}
 }
 
 //Load/Reload images
 if(isset($_POST['galleryId'])) {
-  $galleryId = intval($_POST['galleryId']);
-  $imageResults = $this->reflexdb->getImagesByGalleryId($galleryId);
-  $gallery = $this->reflexdb->getGalleryById($galleryId);
+	if(check_admin_referer('reflex_gallery','reflex_gallery')) {
+	  $galleryId = intval($_POST['galleryId']);
+	  $imageResults = $this->reflexdb->getImagesByGalleryId($galleryId);
+	  $gallery = $this->reflexdb->getGalleryById($galleryId);
+	}
 }
 ?>
 <div class='wrap'>
@@ -87,7 +95,8 @@ $galleryResults = $this->reflexdb->getGalleries();
                     <td></td>
                     <td>
                     	<form name="select_gallery_form" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>" method="post">
-                    	<input type="hidden" name="galleryId" value="<?php _e($gallery->Id); ?>" />
+                    	<?php wp_nonce_field('reflex_gallery', 'reflex_gallery'); ?>
+                        <input type="hidden" name="galleryId" value="<?php _e($gallery->Id); ?>" />
                         <input type="hidden" name="galleryName" value="<?php _e($gallery->name); ?>" />
                         <input type="submit" name="Submit" class="button-primary" value="<?php _e('Select Gallery', 'reflex-gallery'); ?>" />
                 		</form>
@@ -100,6 +109,7 @@ $galleryResults = $this->reflexdb->getGalleries();
 </table>
 <?php } else { ?>
     <form name="add_image_form" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>" method="post">
+    <?php wp_nonce_field('reflex_gallery', 'reflex_gallery'); ?>
     <input type="hidden" name="galleryId" value="<?php _e($gallery->Id); ?>" />
     <table class="widefat post fixed" cellspacing="0">
     	<thead>
@@ -139,6 +149,7 @@ $galleryResults = $this->reflexdb->getGalleries();
         	<?php $GalleryId = $_POST['galleryId']; ?>
             <h3><?php _e('Gallery Images', 'reflex-gallery'); ?>: <?php _e($gallery->name); ?></h3>
             <form name="switch_gallery" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
+            <?php wp_nonce_field('reflex_gallery', 'reflex_gallery'); ?>
             <input type="hidden" name="switch" value="true" />
             <p><input type="submit" name="Submit" class="button-primary" value="<?php _e('Switch Gallery', 'reflex-gallery'); ?>" /></p>
             </form>
@@ -166,6 +177,7 @@ $galleryResults = $this->reflexdb->getGalleries();
             	<td><a onclick="var images=['<?php _e($image->imagePath); ?>']; var titles=['<?php _e($image->title); ?>']; var descriptions=['<?php _e($image->description); ?>']; jQuery.prettyPhoto.open(images,titles,descriptions);" style="cursor: pointer;"><img src="<?php _e($image->imagePath); ?>" width="75" border="0" /></a><br /><i><?php _e('Click to preview', 'reflex-gallery'); ?></i></td>
                 <td>
                 	<form name="edit_image_form" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>" method="post">
+                    <?php wp_nonce_field('reflex_gallery', 'reflex_gallery'); ?>
                     <input type="hidden" name="galleryId" value="<?php _e($GalleryId); ?>" />
                 	<input type="hidden" name="edit_image" value="<?php _e($image->Id); ?>" />                    
                 	<p><strong><?php _e('Image Path', 'reflex-gallery'); ?>:</strong> <input type="text" name="edit_imagePath" size="75" value="<?php _e($image->imagePath); ?>" /></p>
@@ -179,6 +191,7 @@ $galleryResults = $this->reflexdb->getGalleries();
                 </td>
                 <td class="major-publishing-actions">
                 <form name="delete_image_form" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>" method="post">
+                <?php wp_nonce_field('reflex_gallery', 'reflex_gallery'); ?>
                 <input type="hidden" name="galleryId" value="<?php _e($GalleryId); ?>" />
                 <input type="hidden" name="delete_image" value="<?php _e($image->Id); ?>" />
                 <input type="submit" name="Submit" class="button-primary" value="<?php _e('Delete Image', 'reflex-gallery'); ?>" />
