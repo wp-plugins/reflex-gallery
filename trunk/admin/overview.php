@@ -2,25 +2,28 @@
 if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); }
 
 if(isset($_POST['galleryId'])) {
-	
-	$this->reflexdb->deleteGallery(intval($_POST['galleryId']));
-		
-	?>  
-	<div class="updated"><p><strong><?php _e('Gallery has been deleted.', 'reflex-gallery'); ?></strong></p></div>  
-	<?php	
+	if(check_admin_referer('reflex_gallery','reflex_gallery')) {
+	  $this->reflexdb->deleteGallery(intval($_POST['galleryId']));
+		  
+	  ?>  
+	  <div class="updated"><p><strong><?php _e('Gallery has been deleted.', 'reflex-gallery'); ?></strong></p></div>  
+	  <?php	
+	}
 }
 
 $galleryResults = $this->reflexdb->getGalleries();
 
 if (isset($_POST['defaultSettings'])) {
-	$temp_defaults = get_option('reflex_gallery_options');
-	$temp_defaults[1]['thumbnail_width'] = $_POST['default_width'];
-	$temp_defaults[1]['thumbnail_height'] = $_POST['default_height'];
-	
-	update_option('reflex_gallery_options', $temp_defaults);
-	?>  
-	<div class="updated"><p><strong><?php _e('Gallery options have been updated.', 'reflex-gallery'); ?></strong></p></div>  
-	<?php
+	if(check_admin_referer('reflex_gallery','reflex_gallery')) {
+	  $temp_defaults = get_option('reflex_gallery_options');
+	  $temp_defaults[1]['thumbnail_width'] = $_POST['default_width'];
+	  $temp_defaults[1]['thumbnail_height'] = $_POST['default_height'];
+	  
+	  update_option('reflex_gallery_options', $temp_defaults);
+	  ?>  
+	  <div class="updated"><p><strong><?php _e('Gallery options have been updated.', 'reflex-gallery'); ?></strong></p></div>  
+	  <?php
+	}
 }
 $default_options = get_option('reflex_gallery_options');
 ?>
@@ -52,6 +55,7 @@ $default_options = get_option('reflex_gallery_options');
                 <td><?php _e($gallery->description); ?></td>
                 <td class="major-publishing-actions">
                 <form name="delete_gallery_<?php _e($gallery->Id); ?>" method ="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
+                	<?php wp_nonce_field('reflex_gallery', 'reflex_gallery'); ?>
                 	<input type="hidden" name="galleryId" value="<?php _e($gallery->Id); ?>" />
                     <input type="submit" name="Submit" class="button-primary" value="<?php _e('Delete Gallery', 'reflex-gallery'); ?>" />
                 </form>
@@ -63,6 +67,7 @@ $default_options = get_option('reflex_gallery_options');
      <br />
      <h3><?php _e('Default Options', 'reflex-gallery'); ?></h3>
      <form name="save_default_settings" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
+     <?php wp_nonce_field('reflex_gallery', 'reflex_gallery'); ?>
      <table class="widefat post fixed" cellspacing="0">
      	<thead>
         	<th><?php _e('Attribute', 'reflex-gallery'); ?></th>
