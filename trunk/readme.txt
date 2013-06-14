@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: image, images, media, photo, photo albums, photos, picture, pictures, Post, posts, plugin, slideshow, wordpress gallery plugin, wp gallery plugin, gallery, gallery for wordpress, wordpress gallery, easy gallery, images gallery, image gallery, free photo gallery, wordpress photo gallery, wordpress photo gallery plugin, wp gallery plugins, responsive wordpress photo gallery
 Requires at least: 2.6
 Tested up to: 3.5.1
-Stable tag: 1.4.7
+Stable tag: 1.4.8
 
 ReFlex Gallery is an easy to use responsive WordPress Gallery Plugin that is two gallery plugins in one.
 
@@ -137,3 +137,7 @@ Keywords: <a href='http://labs.hahncreativegroup.com/wordpress-gallery-plugin/' 
 **May 29, 2013 - v1.4.7**
 
 * Improved form submission security
+
+**June 13, 2013 - v1.4.8**
+
+* Additional work for I18n

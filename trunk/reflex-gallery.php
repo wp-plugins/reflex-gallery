@@ -1,7 +1,7 @@
 <?php
 /**
  * @package ReFlex_Gallery
- * @version 1.4.7
+ * @version 1.4.8
  */
 /*
 Plugin Name: ReFlex Gallery
