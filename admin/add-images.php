@@ -114,19 +114,19 @@ $galleryResults = $this->reflexdb->getGalleries();
     <table class="widefat post fixed" cellspacing="0">
     	<thead>
         <tr>
-            <th width="340">Image Path</th>
-            <th width="150">Image Title</th>
-            <th>Image Description</th>
-            <th width="90">Sort Order</th>
+            <th width="340"><?php _e('Image Path', 'reflex-gallery'); ?></th>
+            <th width="150"><?php _e('Image Title', 'reflex-gallery'); ?></th>
+            <th><?php _e('Image Description', 'reflex-gallery'); ?></th>
+            <th width="90"><?php _e('Sort Order', 'reflex-gallery'); ?></th>
             <th width="115"></th>
         </tr>
         </thead>
         <tfoot>
         <tr>
-            <th>Image Path</th>
-            <th>Image Title</th>
-            <th>Image Description</th>
-            <th>Sort Order</th>
+            <th><?php _e('Image Path', 'reflex-gallery'); ?></th>
+            <th><?php _e('Image Title', 'reflex-gallery'); ?></th>
+            <th><?php _e('Image Description', 'reflex-gallery'); ?></th>
+            <th><?php _e('Sort Order', 'reflex-gallery'); ?></th>
             <th></th>
         </tr>
         </tfoot>
@@ -230,7 +230,7 @@ $galleryResults = $this->reflexdb->getGalleries();
      <table class="widefat post fixed">
     	<thead>
         <tr>
-        	<th><em>Please consider making a donatation for the continued development of this plugin. Thanks.</em></th>
+        	<th><em><?php _e('Please consider making a donatation for the continued development of this plugin. Thanks.', 'reflex-gallery'); ?></em></th>
         </tr>
         </thead>
         <tfoot>
