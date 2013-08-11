@@ -17,7 +17,7 @@ ReFlex Gallery is a fully responsive WordPress image gallery plugin that is actu
 Features include:
 
 - Responsive galleries (works on smart devices)
-- Two gallery types in one
+- Two gallery types in one (prettyPhoto modal and FlexSlider for mobile devices)
 - Include multiple galleries on a page/post
 - Set the 'sort order' of images in the galleries
 - WordPress ShortCodes for easy content integration
