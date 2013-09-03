@@ -1,14 +1,14 @@
 <?php
 /**
  * @package ReFlex_Gallery
- * @version 1.4.9
+ * @version 2.0
  */
 /*
 Plugin Name: ReFlex Gallery
 Plugin URI: http://wordpress-photo-gallery.com/
 Description: Wordpress Plugin for creating responsive image galleries. By: HahnCreativeGroup
 Author: HahnCreativeGroup
-Version: 1.4.9
+Version: 2.0
 Author URI: http://labs.hahncreativegroup.com/
 */
 if (!class_exists("ReFlex_Gallery")) {
@@ -25,6 +25,8 @@ if (!class_exists("ReFlex_Gallery")) {
 			register_activation_hook( $this->plugin_name,  array(&$this, 'create_db_tables') );
 			add_action('init', array($this, 'create_textdomain'));
 			add_action('wp_enqueue_scripts', array($this, 'add_gallery_scripts'));
+			
+			add_action('wp_head', array($this, 'reflex_custom_style'));
 			
 			add_action( 'admin_init', array($this,'gallery_admin_init') );
 			add_action( 'admin_menu', array($this, 'add_gallery_admin_menu') );
@@ -73,22 +75,56 @@ if (!class_exists("ReFlex_Gallery")) {
 		
 		//Add gallery options
 		public function add_gallery_options() {
-			$gallery_options = array(
-				'thumbnail_width'  => 'auto',
-				'thumbnail_height' => 'auto'																	 
-			);
+			if(!get_option('reflex_gallery_options')) {
+			  $gallery_options = array(
+				  'thumbnail_width'  => 'auto',
+				  'thumbnail_height' => 'auto',
+				  'hide_overlay'     => 'false',
+				  'hide_social'      => 'false',
+				  'custom_style'     => ''
+			  );
 			
-			add_option('reflex_gallery_options', array($this, $gallery_options));
+				add_option('reflex_gallery_options', array($this, $gallery_options));
+			}
+			else {
+				$reFlexGalleryOptions = get_option('reflex_gallery_options');
+				$keys = array_keys($reFlexGalleryOptions[1]);				
+								
+				if (!in_array('hide_overlay', $keys)) {
+					$reFlexGalleryOptions[1]['hide_overlay'] = "false";	
+				}
+				if (!in_array('hide_social', $keys)) {
+					$reFlexGalleryOptions[1]['hide_social'] = "false";	
+				}				
+				if (!in_array('custom_style', $keys)) {
+					$reFlexGalleryOptions[1]['custom_style'] = "";	
+				}
+				
+				update_option('reflex_gallery_options', $reFlexGalleryOptions);		
+			}
 		}
 		
 		//Add gallery scripts
 		public function add_gallery_scripts() {			
+			$ReflexGalleryOptions = get_option('reflex_gallery_options');
+			
 			wp_enqueue_script('jquery');
 			wp_register_script('jquery_migrate', WP_PLUGIN_URL.'/reflex-gallery/scripts/jquery-migrate.js', array('jquery'), null);
 			wp_enqueue_script('jquery_migrate');
 			wp_register_script('flexSlider', WP_PLUGIN_URL.'/reflex-gallery/scripts/flexslider/jquery.flexslider-min.js', array('jquery'));
 			wp_register_script('prettyPhoto', WP_PLUGIN_URL.'/reflex-gallery/scripts/prettyphoto/jquery.prettyPhoto.js', array('jquery'));
-			wp_register_script('galleryManager', WP_PLUGIN_URL.'/reflex-gallery/scripts/galleryManager.min.js', array('flexSlider', 'prettyPhoto', 'jquery'));
+			if($ReflexGalleryOptions[1]['hide_overlay'] == 'true' && $ReflexGalleryOptions[1]['hide_social'] == 'false') {
+				wp_register_script('galleryManager', WP_PLUGIN_URL.'/reflex-gallery/scripts/galleryManagerNoOverlay.js', array('flexSlider', 'prettyPhoto', 'jquery'));
+			}
+			else if($ReflexGalleryOptions[1]['hide_overlay'] == 'false' && $ReflexGalleryOptions[1]['hide_social'] == 'true') {
+				wp_register_script('galleryManager', WP_PLUGIN_URL.'/reflex-gallery/scripts/galleryManagerNoSocial.js', array('flexSlider', 'prettyPhoto', 'jquery'));
+			}
+			else if($ReflexGalleryOptions[1]['hide_overlay'] == 'true' && $ReflexGalleryOptions[1]['hide_social'] == 'true') {
+				wp_register_script('galleryManager', WP_PLUGIN_URL.'/reflex-gallery/scripts/galleryManagerNoOverlayNoSocial.js', array('flexSlider', 'prettyPhoto', 'jquery'));
+			}
+			else {
+				wp_register_script('galleryManager', WP_PLUGIN_URL.'/reflex-gallery/scripts/galleryManager.js', array('flexSlider', 'prettyPhoto', 'jquery'));
+			}
 			wp_enqueue_script('flexSlider');
 			wp_enqueue_script('prettyPhoto');
 			wp_enqueue_script('galleryManager');
@@ -96,6 +132,12 @@ if (!class_exists("ReFlex_Gallery")) {
 			wp_register_style('prettyPhoto_stylesheet', WP_PLUGIN_URL.'/reflex-gallery/scripts/prettyphoto/prettyPhoto.css');
 			wp_enqueue_style('flexSlider_stylesheet');
 			wp_enqueue_style('prettyPhoto_stylesheet');
+		}
+		
+		//Add custom thumbnail styles
+		public function reflex_custom_style() {
+			$styles = get_option('reflex_gallery_options');
+			echo "<style>.reflex-gallery a img {".$styles[1]['custom_style']."}</style>";
 		}
 				
 		//Admin Section - register scripts and styles

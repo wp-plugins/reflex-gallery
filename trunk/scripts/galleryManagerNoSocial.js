@@ -57,7 +57,7 @@ jQuery(window).load(function() {
 					jQuery(".flexslider").each(function(index){
 					  jQuery(this).replaceWith(pGallery[index]);
 					});
-					jQuery("a[rel^='prettyPhoto']").prettyPhoto({counter_separator_label:' of ',theme:'light_rounded',overlay_gallery:true});
+					jQuery("a[rel^='prettyPhoto']").prettyPhoto({counter_separator_label:' of ',theme:'light_rounded',overlay_gallery:true,social_tools:false});
 					jQuery(window).bind('resize', function() {handleScreenSize(Gallery);});
 				},
 				renderFGallery: function() {
