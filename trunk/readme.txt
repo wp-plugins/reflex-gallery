@@ -23,6 +23,7 @@ Features include:
 - WordPress ShortCodes for easy content integration
 - And much more...
 - German translation added (Deutsch &Uuml;bersetzung hinzugef&uuml;gt)
+- Portuguese translation added (Tradu&ccedil;&atilde;o em portugu&ecirc;s adicionado)
 
 For more information about this wordpress gallery plugin: <a href='http://wordpress-photo-gallery.com/#gallery' title='Responsive WordPress Photo Gallery'>ReFlex Gallery</a> - ReFlex Gallery Pro is a fully responsive WordPress image gallery plugin that is actually two galleries in one.
 

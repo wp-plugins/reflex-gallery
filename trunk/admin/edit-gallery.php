@@ -140,7 +140,7 @@ if(isset($_POST['easy_gallery_edit']))
      <table class="widefat post fixed">
     	<thead>
         <tr>
-        	<th><em><?php _e('Please consider making a donatation for the continued development of this plugin. Thanks.', 'reflex-gallery'); ?></em></th>
+        	<th><em><?php _e('Please consider making a donation for the continued development of this plugin. Thanks.', 'reflex-gallery'); ?></em></th>
         </tr>
         </thead>
         <tfoot>
