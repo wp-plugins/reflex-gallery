@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ReFlex Gallery\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-07 23:39-0800\n"
-"PO-Revision-Date: 2013-09-12 22:26-0800\n"
+"POT-Creation-Date: 2013-09-16 21:14-0800\n"
+"PO-Revision-Date: 2013-09-16 21:15-0800\n"
 "Last-Translator: Tyson Hahn <tysons_music@yahoo.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -132,8 +132,8 @@ msgstr "Dies ist die Höhe der Galerie Miniaturansicht."
 #: C:\xampp\htdocs\ThemeFactory\wp-content\plugins\reflex-gallery/admin/add-images.php:233
 #: C:\xampp\htdocs\ThemeFactory\wp-content\plugins\reflex-gallery/admin/edit-gallery.php:143
 #: C:\xampp\htdocs\ThemeFactory\wp-content\plugins\reflex-gallery/admin/overview.php:126
-msgid "Please consider making a donatation for the continued development of this plugin. Thanks."
-msgstr "Bitte beachten Sie, dass eine donatation für die weitere Entwicklung dieses Plugins. Vielen Dank."
+msgid "Please consider making a donation for the continued development of this plugin. Thanks."
+msgstr "Bitte beachten Sie, eine Spende für die weitere Entwicklung dieses Plugins. Vielen Dank."
 
 #: C:\xampp\htdocs\ThemeFactory\wp-content\plugins\reflex-gallery/admin/add-images.php:17
 msgid "Image saved."
