@@ -206,8 +206,8 @@ $galleryResults = $this->reflexdb->getGalleries();
 	?>
 
 <script src="<?php echo WP_PLUGIN_URL; ?>/reflex-gallery/admin/scripts/FileUploader/fileuploader.js" type="text/javascript"></script>
-<script src="<?php echo WP_PLUGIN_URL; ?>/reflex-gallery/scripts/prettyPhoto/jquery.prettyPhoto.js" type="text/javascript"></script>
-<script src="<?php echo WP_PLUGIN_URL; ?>/reflex-gallery/scripts/prettyPhoto/ReflexGalleryLoader.js" type="text/javascript"></script>
+<script src="<?php echo WP_PLUGIN_URL; ?>/reflex-gallery/scripts/prettyphoto/jquery.prettyPhoto.js" type="text/javascript"></script>
+<script src="<?php echo WP_PLUGIN_URL; ?>/reflex-gallery/scripts/prettyphoto/ReflexGalleryLoader.js" type="text/javascript"></script>
     <script>        
         function createUploader(){            
             var uploader = new qq.FileUploader({
