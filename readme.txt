@@ -1,10 +1,10 @@
 === ReFlex Gallery ===
 Contributors: hahncgdev
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BD7VZR88K9DB4
-Tags: image, images, media, photo, photo albums, photos, picture, pictures, Post, posts, plugin, slideshow, wordpress gallery plugin, wp gallery plugin, gallery, gallery for wordpress, wordpress gallery, easy gallery, images gallery, image gallery, free photo gallery, wordpress photo gallery, wordpress photo gallery plugin, wp gallery plugins, responsive wordpress photo gallery
+Tags: image, images, media, photo, photo albums, photos, picture, pictures, Post, posts, plugin, slideshow, wordpress gallery plugin, wp gallery plugin, gallery, gallery for wordpress, wordpress gallery, photo gallery, images gallery, image gallery, free photo gallery, wordpress photo gallery, wordpress photo gallery plugin, wp gallery plugins, responsive wordpress photo gallery
 Requires at least: 2.6
-Tested up to: 3.6.1
-Stable tag: 2.1
+Tested up to: 3.7.1
+Stable tag: 2.2
 
 ReFlex Gallery is an easy to use responsive WordPress Gallery Plugin that is two gallery plugins in one.
 
@@ -154,3 +154,7 @@ Keywords: <a href='http://labs.hahncreativegroup.com/wordpress-gallery-plugin/' 
 **Oct. 1, 2013 - v2.1**
 
 * Fixed directory naming issue on add-images page that caused problems with prettyPhoto scripts in some hosting environments.
+
+**Nov. 29, 2013 - v2.2**
+
+* Changed how image info edits are saved to allow all edits to be saved in a single action.

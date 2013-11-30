@@ -23,13 +23,23 @@ if(isset($_POST['upload_image'])) {
 //Edit image
 if(isset($_POST['edit_image'])) {	
 	if(check_admin_referer('reflex_gallery','reflex_gallery')) {
-	  $id = intval($_POST['edit_image']);
-	  $image = mysql_real_escape_string($_POST['edit_imagePath']);
-	  $imageTitle = mysql_real_escape_string($_POST['edit_imageTitle']);
-	  $imageDescription = mysql_real_escape_string($_POST['edit_imageDescription']);
-	  $sortOrder = intval(0 + $_POST['edit_imageSort']);	
+	  $ids = $_POST['edit_image'];
+	  $images = $_POST['edit_imagePath'];
+	  $imageTitles = $_POST['edit_imageTitle'];
+	  $imageDescriptions = $_POST['edit_imageDescription'];
+	  $sortOrders = $_POST['edit_imageSort'];
+	  $imagesToDelete = isset($_POST['edit_imageDelete']) ? $_POST['edit_imageDelete'] : array();
 	  
-	  $imageEdited = $this->reflexdb->editImage($id, $image, $imageTitle, $imageDescription, $sortOrder)
+	  $i = 0;
+	  foreach($ids as $editImageId) {
+			if(in_array($editImageId, $imagesToDelete)) {
+				$this->reflexdb->deleteImage(intval($editImageId));
+			}
+			else {
+				$imageEdited = $this->reflexdb->editImage(intval($editImageId), mysql_real_escape_string($images[$i]), mysql_real_escape_string($imageTitles[$i]), mysql_real_escape_string($imageDescriptions[$i]), intval($sortOrders[$i]));
+			}		
+			$i++;
+		}
 		  
 	  ?>  
 	  <div class="updated"><p><strong><?php _e('Image has been edited.', 'reflex-gallery'); ?></strong></p></div>  
@@ -120,16 +130,7 @@ $galleryResults = $this->reflexdb->getGalleries();
             <th width="90"><?php _e('Sort Order', 'reflex-gallery'); ?></th>
             <th width="115"></th>
         </tr>
-        </thead>
-        <tfoot>
-        <tr>
-            <th><?php _e('Image Path', 'reflex-gallery'); ?></th>
-            <th><?php _e('Image Title', 'reflex-gallery'); ?></th>
-            <th><?php _e('Image Description', 'reflex-gallery'); ?></th>
-            <th><?php _e('Sort Order', 'reflex-gallery'); ?></th>
-            <th></th>
-        </tr>
-        </tfoot>
+        </thead>        
         <tbody>
         	<tr>
             	<td><input id="upload_image" type="text" size="36" name="upload_image" value="" />
@@ -159,48 +160,34 @@ $galleryResults = $this->reflexdb->getGalleries();
         <tr>
         	<th width="105"><?php _e('Image Preview', 'reflex-gallery'); ?></th>
             <th><?php _e('Image Info', 'reflex-gallery'); ?></th>
-            <th width="115"></th>
-            <th width="115"></th>
+            <th width="230"><strong><em><a href="http://wordpress-photo-gallery.com/reflex-gallery-premium/" target="_blank">Try ReFlex Gallery Premium</a></em></strong></th>
+            
         </tr>
-        </thead>
-        <tfoot>
-        <tr>
-        	<th><?php _e('Image Preview', 'reflex-gallery'); ?></th>
-            <th><?php _e('Image Info', 'reflex-gallery'); ?></th>
-            <th></th>
-            <th></th>
-        </tr>
-        </tfoot>
-        <tbody>        	
+        </thead>        
+        <tbody> 
+			<form name="edit_image_form" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>" method="post">
+            <?php wp_nonce_field('reflex_gallery', 'reflex_gallery'); ?>
+            <input type="hidden" name="galleryId" value="<?php _e($GalleryId); ?>" />
         	<?php foreach($imageResults as $image) { ?>				
             <tr>
             	<td><a onclick="var images=['<?php _e($image->imagePath); ?>']; var titles=['<?php _e($image->title); ?>']; var descriptions=['<?php _e($image->description); ?>']; jQuery.prettyPhoto.open(images,titles,descriptions);" style="cursor: pointer;"><img src="<?php _e($image->imagePath); ?>" width="75" border="0" /></a><br /><i><?php _e('Click to preview', 'reflex-gallery'); ?></i></td>
                 <td>
-                	<form name="edit_image_form" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>" method="post">
-                    <?php wp_nonce_field('reflex_gallery', 'reflex_gallery'); ?>
-                    <input type="hidden" name="galleryId" value="<?php _e($GalleryId); ?>" />
-                	<input type="hidden" name="edit_image" value="<?php _e($image->Id); ?>" />                    
-                	<p><strong><?php _e('Image Path', 'reflex-gallery'); ?>:</strong> <input type="text" name="edit_imagePath" size="75" value="<?php _e($image->imagePath); ?>" /></p>
-                    <p><strong><?php _e('Image Title', 'reflex-gallery'); ?>:</strong> <input type="text" name="edit_imageTitle" size="20" value="<?php _e($image->title); ?>" /></p>
-                    <p><strong><?php _e('Image Description', 'reflex-gallery'); ?>:</strong> <input type="text" name="edit_imageDescription" size="75" value="<?php _e($image->description); ?>" /></p>
-                    <p><strong><?php _e('Sort Order', 'reflex-gallery'); ?>:</strong> <input type="text" name="edit_imageSort" size="10" value="<?php _e($image->sortOrder); ?>" /></p>
-                </td>
-                <td class="major-publishing-actions">                
-                <input type="submit" name="Submit" class="button-primary" value="<?php _e('Edit Image', 'reflex-gallery'); ?>" />
-                </form>
+                	
+                	<input type="hidden" name="edit_image[]" value="<?php _e($image->Id); ?>" />                    
+                	<p><strong><?php _e('Image Path', 'reflex-gallery'); ?>:</strong> <input type="text" name="edit_imagePath[]" size="75" value="<?php _e($image->imagePath); ?>" /></p>
+                    <p><strong><?php _e('Image Title', 'reflex-gallery'); ?>:</strong> <input type="text" name="edit_imageTitle[]" size="20" value="<?php _e($image->title); ?>" /></p>
+                    <p><strong><?php _e('Image Description', 'reflex-gallery'); ?>:</strong> <input type="text" name="edit_imageDescription[]" size="75" value="<?php _e($image->description); ?>" /></p>
+                    <p><strong><?php _e('Sort Order', 'reflex-gallery'); ?>:</strong> <input type="text" name="edit_imageSort[]" size="10" value="<?php _e($image->sortOrder); ?>" /></p>
+					<p><strong><?php _e('Delete Image?', 'reflex-gallery'); ?></strong> <input type="checkbox" name="edit_imageDelete[]" value="<?php echo $image->Id; ?>" /></p>
                 </td>
                 <td class="major-publishing-actions">
-                <form name="delete_image_form" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>" method="post">
-                <?php wp_nonce_field('reflex_gallery', 'reflex_gallery'); ?>
-                <input type="hidden" name="galleryId" value="<?php _e($GalleryId); ?>" />
-                <input type="hidden" name="delete_image" value="<?php _e($image->Id); ?>" />
-                <input type="submit" name="Submit" class="button-primary" value="<?php _e('Delete Image', 'reflex-gallery'); ?>" />
-                </form>
                 </td>
             </tr>
 			<?php } ?>
         </tbody>
-     </table>     
+     </table>
+		<p class="major-publishing-actions"><input type="submit" name="Submit" class="button-primary" value="<?php _e('Save Changes', 'reflex-gallery'); ?>" /></p>
+        </form>
         <?php	
 		}
 	?>
