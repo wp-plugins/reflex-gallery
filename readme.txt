@@ -43,7 +43,7 @@ Be sure to also check out these other plugins for WordPress: <a href='http://wor
 The developer of this plugin is not in any way affiliated to the developer of the prettyPhoto jQuery plugin.
 prettyPhoto is being developed by [Stephane Caron](http://www.no-margin-for-errors.com) and licensed under the [GPLv2 license](http://www.gnu.org/licenses/gpl-2.0.html). As the developer states, prettyPhoto is "totally free to use (...) in all projects, even commercial ones".
 
-For more information on prettyPhoto (version 3.1.5) please visit the project page:
+For more information on prettyPhoto please visit the project page:
 [prettyPhoto project page](http://www.no-margin-for-errors.com/projects/prettyphoto-jquery-lightbox-clone/ "prettyPhoto project page")
 
 FlexSlider is licensed by [woothemes](https://github.com/woothemes/FlexSlider) under the [GPLv2 license](http://www.gnu.org/licenses/gpl-2.0.html).
