@@ -1,3 +1,7 @@
+//
+// Plugin Name: ReFlex Gallery
+// Plugin URI: http://labs.hahncreativegroup.com/reflex-gallery/
+//
 jQuery(window).load(function() {		
 		
 		var Gallery = (function() {
