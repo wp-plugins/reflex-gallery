@@ -18,7 +18,7 @@ if (!class_exists("ResponsiveGallery")) {
 				$galleryPanels .= "<li><img src=\"".$image->imagePath."\" alt=\"".$title."\" />".$description."</li>";
 			}
 			
-			$gallery = "<div class=\"flexslider\"><ul class=\"slides\" data-width=\"".$gallerySetting->thumbwidth."\" data-height=\"".$gallerySetting->thumbheight."\">".$galleryPanels."</ul></div>";
+			$gallery = "<div class=\"flexslider\" data-title=\"".$gallerySetting->name."\"><ul class=\"slides\" data-width=\"".$gallerySetting->thumbwidth."\" data-height=\"".$gallerySetting->thumbheight."\">".$galleryPanels."</ul></div>";
 			
 			return $gallery;
 		}
