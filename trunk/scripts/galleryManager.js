@@ -27,6 +27,8 @@ jQuery(window).load(function() {
 				
 				jQuery(".flexslider").each(function(index){				  
 				  
+					  var title = jQuery(this).attr("data-title");
+					  
 					  var that = jQuery(this).children(".slides");
 					  
 					  var width = (that.attr("data-width") == 0) ? "" : " width='"+that.attr("data-width")+"'";
