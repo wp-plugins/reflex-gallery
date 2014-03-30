@@ -47,7 +47,7 @@ jQuery(window).load(function() {
 						
 				 });
 				  
-				    var gallery = "<span class='reflex-gallery'><a style='cursor: pointer;' onclick=\"var images=["+galleryImgs+"]; var titles=["+imageTitles+"]; var descriptions=["+imageDesc+"]; jQuery.prettyPhoto.open(images,titles,descriptions);\"><img src="+galleryImgs[0]+""+width+height+" /></a></span>";
+				    var gallery = "<span class='reflex-gallery'><a style='cursor: pointer;' onclick=\"var images=["+galleryImgs+"]; var titles=["+imageTitles+"]; var descriptions=["+imageDesc+"]; jQuery.prettyPhoto.open(images,titles,descriptions);\"><img class='dShadow' src="+galleryImgs[0]+""+width+height+" /></a></span>";
 				
 					pGalleries.push(gallery);
 				
