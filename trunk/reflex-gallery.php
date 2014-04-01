@@ -81,7 +81,8 @@ if (!class_exists("ReFlex_Gallery")) {
 				  'thumbnail_height' => 'auto',
 				  'hide_overlay'     => 'false',
 				  'hide_social'      => 'false',
-				  'custom_style'     => ''
+				  'custom_style'     => '',
+				  'thumbnail_dShadow'=> 'true'
 			  );
 			
 				add_option('reflex_gallery_options', array($this, $gallery_options));
@@ -98,6 +99,9 @@ if (!class_exists("ReFlex_Gallery")) {
 				}				
 				if (!in_array('custom_style', $keys)) {
 					$reFlexGalleryOptions[1]['custom_style'] = "";	
+				}
+				if (!in_array('thumbnail_dShadow', $keys)) {
+					$reFlexGalleryOptions[1]['thumbnail_dShadow'] = "true";	
 				}
 				
 				update_option('reflex_gallery_options', $reFlexGalleryOptions);		

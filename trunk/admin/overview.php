@@ -21,6 +21,7 @@ if (isset($_POST['defaultSettings'])) {
 	  $temp_defaults[1]['hide_overlay'] = isset($_POST['hide_overlay']) ? $_POST['hide_overlay'] : 'false';
 	  $temp_defaults[1]['hide_social'] = isset($_POST['hide_social']) ? $_POST['hide_social'] : 'false';
 	  $temp_defaults[1]['custom_style'] = isset($_POST['custom_style']) ? $_POST['custom_style'] : '';
+	  $temp_defaults[1]['thumbnail_dShadow'] = isset($_POST['thumbnail_dShadow']) ? $_POST['thumbnail_dShadow'] : 'true';
 	  
 	  update_option('reflex_gallery_options', $temp_defaults);
 	  ?>  
