@@ -17,8 +17,9 @@ if (!class_exists("ResponsiveGallery")) {
 				$description = ($image->description == null || $image->description == "") ? "" : "<p class=\"flex-caption\">".$image->description."</p>";				
 				$galleryPanels .= "<li><img src=\"".$image->imagePath."\" alt=\"".$title."\" />".$description."</li>";
 			}
-			
-			$gallery = "<div class=\"flexslider\" data-title=\"".$gallerySetting->name."\"><ul class=\"slides\" data-width=\"".$gallerySetting->thumbwidth."\" data-height=\"".$gallerySetting->thumbheight."\">".$galleryPanels."</ul></div>";
+			$options = get_option('reflex_gallery_options');
+			$options = $options[1];
+			$gallery = "<div class=\"flexslider\" data-title=\"".$gallerySetting->name."\" data-dShadow=\"".$options['thumbnail_dShadow']."\"><ul class=\"slides\" data-width=\"".$gallerySetting->thumbwidth."\" data-height=\"".$gallerySetting->thumbheight."\">".$galleryPanels."</ul></div>";
 			
 			return $gallery;
 		}

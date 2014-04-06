@@ -28,11 +28,12 @@ jQuery(window).load(function() {
 				jQuery(".flexslider").each(function(index){				  
 				  
 					  var title = jQuery(this).attr("data-title");
+					  var dShadow = (jQuery(this).attr("data-dShadow") == "true") ? "class='dShadow'" : "";
 					  
 					  var that = jQuery(this).children(".slides");
 					  
 					  var width = (that.attr("data-width") == 0) ? "" : " width='"+that.attr("data-width")+"'";
-					  var height = (that.attr("data-height") == 0) ? "" : " height='"+that.attr("data-height")+"'";
+					  var height = (that.attr("data-height") == 0) ? "" : " height='"+that.attr("data-height")+"'";					  
 					  
 					  var galleryImgs = [];
 					  var imageTitles = [];
@@ -49,7 +50,7 @@ jQuery(window).load(function() {
 						
 				 });
 				  
-				    var gallery = "<span class='reflex-gallery'><a style='cursor: pointer;' onclick=\"var images=["+galleryImgs+"]; var titles=["+imageTitles+"]; var descriptions=["+imageDesc+"]; jQuery.prettyPhoto.open(images,titles,descriptions);\"><img class='dShadow' src="+galleryImgs[0]+""+width+height+" /></a></span>";
+				    var gallery = "<span class='reflex-gallery'><a style='cursor: pointer;' onclick=\"var images=["+galleryImgs+"]; var titles=["+imageTitles+"]; var descriptions=["+imageDesc+"]; jQuery.prettyPhoto.open(images,titles,descriptions);\"><img "+dShadow+" src="+galleryImgs[0]+""+width+height+" /></a></span>";
 				
 					pGalleries.push(gallery);
 				
