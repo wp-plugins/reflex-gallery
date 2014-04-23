@@ -14,8 +14,8 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
 	{
 		if($_POST['galleryName'] != "") {
 		  if(check_admin_referer('reflex_gallery','reflex_gallery')) {
-			$galleryName = mysql_real_escape_string($_POST['galleryName']);
-			$galleryDescription = mysql_real_escape_string($_POST['galleryDescription']);	  
+			$galleryName = esc_sql($_POST['galleryName']);
+			$galleryDescription = esc_sql($_POST['galleryDescription']);	  
 			$slug = strtolower(str_replace(" ", "", $galleryName));
 			$thumbwidth = intval($_POST['gallerythumbwidth']);
 			$thumbheight = intval($_POST['gallerythumbheight']);		  
