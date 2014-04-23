@@ -6,7 +6,7 @@ $galleryResults = $this->reflexdb->getGalleries();
 //Select gallery
 if(isset($_POST['select_gallery']) || isset($_POST['galleryId'])) {
 	if(check_admin_referer('reflex_gallery','reflex_gallery')) {
-	  $gid = (isset($_POST['select_gallery'])) ? intval(mysql_real_escape_string($_POST['select_gallery'])) : intval(mysql_real_escape_string($_POST['galleryId']));	
+	  $gid = (isset($_POST['select_gallery'])) ? intval(esc_sql($_POST['select_gallery'])) : intval(esc_sql($_POST['galleryId']));	
 	  
 	  $imageResults = $this->reflexdb->getImagesByGalleryId($gid);
 	  $gallery = $this->reflexdb->getGalleryById($gid);
@@ -18,8 +18,8 @@ if(isset($_POST['easy_gallery_edit']))
 	if($_POST['galleryName'] != "") {
 	  if(check_admin_referer('reflex_gallery','reflex_gallery')) {
 		$editId = intval($_POST['easy_gallery_edit']);
-		$galleryName = mysql_real_escape_string($_POST['galleryName']);
-		$galleryDescription = mysql_real_escape_string($_POST['galleryDescription']);	  
+		$galleryName = esc_sql($_POST['galleryName']);
+		$galleryDescription = esc_sql($_POST['galleryDescription']);	  
 		$slug = strtolower(str_replace(" ", "", $galleryName));
 		$thumbwidth = intval($_POST['gallerythumbwidth']);
 		$thumbheight = intval($_POST['gallerythumbheight']);

@@ -6,9 +6,9 @@ if(isset($_POST['upload_image'])) {
 	if (!isset($_POST['switch']) && !isset($_POST['delete_image']) && !isset($_POST['edit_image'])) {
 	  if(check_admin_referer('reflex_gallery','reflex_gallery')) {
 		$gid = intval($_POST['galleryId']);
-		$imagePath = mysql_real_escape_string($_POST['upload_image']);
-		$imageTitle = mysql_real_escape_string($_POST['image_title']);
-		$imageDescription = mysql_real_escape_string($_POST['image_description']);
+		$imagePath = esc_sql($_POST['upload_image']);
+		$imageTitle = esc_sql($_POST['image_title']);
+		$imageDescription = esc_sql($_POST['image_description']);
 		$sortOrder = intval($_POST['image_sortOrder']);
 		$imageAdded = $this->reflexdb->addFullImage($gid, $imagePath, $imageTitle, $imageDescription, $sortOrder);
 		
@@ -36,7 +36,7 @@ if(isset($_POST['edit_image'])) {
 				$this->reflexdb->deleteImage(intval($editImageId));
 			}
 			else {
-				$imageEdited = $this->reflexdb->editImage(intval($editImageId), mysql_real_escape_string($images[$i]), mysql_real_escape_string($imageTitles[$i]), mysql_real_escape_string($imageDescriptions[$i]), intval($sortOrders[$i]));
+				$imageEdited = $this->reflexdb->editImage(intval($editImageId), esc_sql($images[$i]), esc_sql($imageTitles[$i]), esc_sql($imageDescriptions[$i]), intval($sortOrders[$i]));
 			}		
 			$i++;
 		}
