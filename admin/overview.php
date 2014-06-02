@@ -18,10 +18,11 @@ if (isset($_POST['defaultSettings'])) {
 	  $temp_defaults = get_option('reflex_gallery_options');
 	  $temp_defaults[1]['thumbnail_width'] = $_POST['default_width'];
 	  $temp_defaults[1]['thumbnail_height'] = $_POST['default_height'];
+	  $temp_defaults[1]['style'] = $_POST['style'];
 	  $temp_defaults[1]['hide_overlay'] = isset($_POST['hide_overlay']) ? $_POST['hide_overlay'] : 'false';
 	  $temp_defaults[1]['hide_social'] = isset($_POST['hide_social']) ? $_POST['hide_social'] : 'false';
 	  $temp_defaults[1]['custom_style'] = isset($_POST['custom_style']) ? $_POST['custom_style'] : '';
-	  $temp_defaults[1]['thumbnail_dShadow'] = isset($_POST['thumbnail_dShadow']) ? $_POST['thumbnail_dShadow'] : 'false';
+	  $temp_defaults[1]['thumbnail_dShadow'] = isset($_POST['thumbnail_dShadow']) ? $_POST['thumbnail_dShadow'] : 'false';	  
 	  
 	  update_option('reflex_gallery_options', $temp_defaults);
 	  ?>  
@@ -93,6 +94,16 @@ $default_options = get_option('reflex_gallery_options');
             	<td><?php _e('Default Thumbnail Height', 'reflex-gallery'); ?></td>
                 <td><input name="default_height" id="default_height" value="<?php _e($default_options[1]['thumbnail_height']); ?>" /> px</td>
                 <td><?php _e('This is the default height (in pixels) of all of the gallery thumbnail images.<br />(This property can be overwritten when creating individual galleries.)', 'reflex-gallery'); ?></td>
+            </tr>
+			<tr>
+            	<td><?php _e('Thumbnail Style', 'reflex-gallery'); ?></td>
+                <td>
+					<select id="style" name="style">
+						<option value="default"<?php _e(($default_options[1]['style'] == 'default') ? " selected" : ""); ?>>Default - Fade-in on hover</option>
+						<option value="reverse"<?php _e(($default_options[1]['style'] == 'reverse') ? " selected" : ""); ?>>Reverse - Fade-out on hover</option>
+					</select>
+				</td>
+                <td><?php _e('This is the style/skin of all of the gallery thumbnail images.', 'reflex-gallery'); ?></td>
             </tr>			
 			<tr>
             	<td><?php _e('Thumbnail Dropshadow', 'reflex-gallery'); ?></td>

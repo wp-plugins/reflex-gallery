@@ -1,14 +1,14 @@
 <?php
 /**
  * @package ReFlex_Gallery
- * @version 2.5
+ * @version 3.0
  */
 /*
 Plugin Name: ReFlex Gallery
 Plugin URI: http://wordpress-photo-gallery.com/
 Description: Wordpress Plugin for creating responsive image galleries. By: HahnCreativeGroup
 Author: HahnCreativeGroup
-Version: 2.5
+Version: 3.0
 Author URI: http://labs.hahncreativegroup.com/
 */
 if (!class_exists("ReFlex_Gallery")) {
@@ -81,6 +81,7 @@ if (!class_exists("ReFlex_Gallery")) {
 				  'thumbnail_height' => 'auto',
 				  'hide_overlay'     => 'false',
 				  'hide_social'      => 'false',
+				  'style'			 => 'default',
 				  'custom_style'     => '',
 				  'thumbnail_dShadow'=> 'true'
 			  );
@@ -96,6 +97,9 @@ if (!class_exists("ReFlex_Gallery")) {
 				}
 				if (!in_array('hide_social', $keys)) {
 					$reFlexGalleryOptions[1]['hide_social'] = "false";	
+				}
+				if (!in_array('style', $keys)) {
+					$reFlexGalleryOptions[1]['style'] = "default";	
 				}				
 				if (!in_array('custom_style', $keys)) {
 					$reFlexGalleryOptions[1]['custom_style'] = "";	
@@ -134,7 +138,7 @@ if (!class_exists("ReFlex_Gallery")) {
 			wp_enqueue_script('galleryManager');
 			wp_register_style('flexSlider_stylesheet', WP_PLUGIN_URL.'/reflex-gallery/scripts/flexslider/flexslider.css');
 			wp_register_style('prettyPhoto_stylesheet', WP_PLUGIN_URL.'/reflex-gallery/scripts/prettyphoto/prettyPhoto.css');
-			wp_register_style('reflexGallery_stylesheet', WP_PLUGIN_URL.'/reflex-gallery/styles/default.css');
+			wp_register_style('reflexGallery_stylesheet', WP_PLUGIN_URL.'/reflex-gallery/styles/'.$ReflexGalleryOptions[1]['style'].'.css');
 			wp_enqueue_style('flexSlider_stylesheet');
 			wp_enqueue_style('prettyPhoto_stylesheet');
 			wp_enqueue_style('reflexGallery_stylesheet');

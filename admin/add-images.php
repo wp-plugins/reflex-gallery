@@ -12,6 +12,7 @@ if(isset($_POST['upload_image'])) {
 		$sortOrder = intval($_POST['image_sortOrder']);
 		$imageAdded = $this->reflexdb->addFullImage($gid, $imagePath, $imageTitle, $imageDescription, $sortOrder);
 		
+		var_dump($imagePath);
 		if($imageAdded) {
 		?>
 			<div class="updated"><p><strong><?php _e('Image saved.'); ?></strong></p></div>  
@@ -134,11 +135,11 @@ $galleryResults = $this->reflexdb->getGalleries();
         <tbody>
         	<tr>
             	<td><input id="upload_image" type="text" size="36" name="upload_image" value="" />
-					<input id="upload_image_button" type="button" value="Upload Image" /></td>
+					<input id="upload_image_button" type="button" value="Upload Image" /> <input type="submit" name="Submit" class="button-primary" value="Save Image" /></td>
                 <td><input type="text" name="image_title" size="20" value="" /></td>
                 <td><input type="text" name="image_description" size="45" value="" /></td>
                 <td><input type="text" name="image_sortOrder" size="10" value="" /></td>
-                <td class="major-publishing-actions"><input type="submit" name="Submit" class="button-primary" value="Add Image" /></td>
+                <td class="major-publishing-actions"></td>
             </tr>        	
         </tbody>
      </table>
@@ -191,27 +192,8 @@ $galleryResults = $this->reflexdb->getGalleries();
         <?php	
 		}
 	?>
-
-<script src="<?php echo WP_PLUGIN_URL; ?>/reflex-gallery/admin/scripts/FileUploader/fileuploader.js" type="text/javascript"></script>
 <script src="<?php echo WP_PLUGIN_URL; ?>/reflex-gallery/scripts/prettyphoto/jquery.prettyPhoto.js" type="text/javascript"></script>
-<script src="<?php echo WP_PLUGIN_URL; ?>/reflex-gallery/scripts/prettyphoto/ReflexGalleryLoader.js" type="text/javascript"></script>
-    <script>        
-        function createUploader(){            
-            var uploader = new qq.FileUploader({
-                element: document.getElementById('file-uploader-demo1'),
-                action: '<?php echo WP_PLUGIN_URL; ?>/reflex-gallery/admin/scripts/FileUploader/php.php',
-				onComplete: function(id, fileName, responseJSON){ jQuery("#imagesContainer").append("<input type='hidden' name='images[]' value='<?php $uploads = wp_upload_dir(); echo $uploads['baseurl']; ?>"+responseJSON['fileName']+"' />"); jQuery("#uploadButton").show(); },
-				params: {
-					Year:  '<?php echo date('Y'); ?>',
-					Month: '<?php echo date('m'); ?>'
-				},
-                debug: true
-            });           
-        }        
-        // in your app create uploader as soon as the DOM is ready
-        // don't wait for the window to load  
-        window.onload = createUploader;		
-    </script>    
+<script src="<?php echo WP_PLUGIN_URL; ?>/reflex-gallery/scripts/prettyphoto/ReflexGalleryLoader.js" type="text/javascript"></script>     
 <?php } ?>
 <br /><br />
      <table class="widefat post fixed">

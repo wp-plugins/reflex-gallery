@@ -57,13 +57,16 @@ class ReflexDB {
 	
 	public function addImage($gid, $image) {
 		global $wpdb;		
-		$imageAdded = $wpdb->insert( $wpdb->reflexImages, array( 'gid' => $gid, 'imagePath' => $image, 'title' => "", 'description' => "", 'sortOrder' => 0 ) );
+		$imageAdded = $wpdb->insert( $wpdb->reflexImages, array( 'gid' => $gid, 'imagePath' => $image, 'title' => "", 'description' => "", 'sortOrder' => 0 ) );		
 		return $imageAdded;
 	}
 	
 	public function addFullImage($gid, $image, $title, $desc, $sort) {
-		global $wpdb;		
+		global $wpdb;
+		$slug = $slug = mb_convert_case(str_replace(" ", "-", $title), MB_CASE_LOWER, "UTF-8");
+		$time = time(); $date = date('Y-m-d H:i:s',$time);
 		$imageAdded = $wpdb->insert( $wpdb->reflexImages, array( 'gid' => $gid, 'imagePath' => $image, 'title' => $title, 'description' => $desc, 'sortOrder' => $sort ) );
+				
 		return $imageAdded;
 	}
 	
