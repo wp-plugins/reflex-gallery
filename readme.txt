@@ -1,44 +1,47 @@
-=== ReFlex Gallery ===
+=== ReFlex Gallery > WordPress Photo Gallery ===
 Contributors: hahncgdev
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BD7VZR88K9DB4
-Tags: image, images, media, photo, photo albums, photos, picture, pictures, Post, posts, plugin, slideshow, wordpress gallery plugin, wp gallery plugin, gallery, gallery for wordpress, wordpress gallery, photo gallery, images gallery, image gallery, free photo gallery, wordpress photo gallery, wordpress photo gallery plugin, wp gallery plugins, responsive wordpress photo gallery
+Tags: image, images, media, photo, photo albums, photos, picture, pictures, Post, posts, plugin, slideshow, wordpress gallery plugin, wp gallery plugin, gallery, gallery for wordpress, wordpress gallery, photo gallery, photo gallery, image gallery, free photo gallery, wordpress photo gallery, wordpress photo gallery plugin, wp gallery plugins, responsive wordpress photo gallery
 Requires at least: 2.6
 Tested up to: 3.9
 Stable tag: 3.0
 
-ReFlex Gallery is an easy to use responsive WordPress Gallery Plugin that is two gallery plugins in one.
+ReFlex Gallery is an easy to use responsive WordPress Photo Gallery Plugin that is two gallery plugins in one.
 
 == Description ==
 
-ReFlex Gallery is a fully responsive WordPress image gallery plugin that is actually two galleries in one. ReFlex Gallery uses a FlexSlider style gallery for all mobile devices with a screen width of 480 pixels or less and dynamically creates prettyPhoto style galleries for all screen widths above 480 pixels. ReFlex Gallery allows for multiple galleries per page.
+### WordPress Photo Gallery
 
-[DEMO](http://wordpress-photo-gallery.com/#gallery)
+ReFlex Gallery is a fully responsive **WordPress photo gallery** plugin that is actually two galleries in one. ReFlex Gallery uses a FlexSlider style gallery for all mobile devices with a screen width of 480 pixels or less and dynamically creates prettyPhoto style galleries for all screen widths above 480 pixels. ReFlex Gallery allows for multiple galleries per page.
 
-Gallery features include:
+[ReFlex Gallery - WordPress Photo Gallery Plugin DEMO](http://wordpress-photo-gallery.com/#gallery)
 
-- Responsive galleries (works on smart devices)
+= Photo Gallery features =
+
+- Responsive photo galleries (works on smart devices)
 - Two gallery types in one (prettyPhoto modal pop-up and FlexSlider for mobile devices)
-- Include multiple galleries on a page/post
+- Include multiple galleries on a page or post
 - Set the 'sort order' of images in the galleries
 - WordPress ShortCodes for easy content integration
 - And much more...
 - German translation added (Deutsch &Uuml;bersetzung hinzugef&uuml;gt)
 - Portuguese translation added (Tradu&ccedil;&atilde;o em portugu&ecirc;s adicionado)
 
-For more information about this wordpress gallery plugin: <a href='http://wordpress-photo-gallery.com/#gallery' title='Responsive WordPress Photo Gallery'>ReFlex Gallery</a> - ReFlex Gallery Pro is a fully responsive WordPress image gallery plugin that is actually two galleries in one.
+For more information about this wordpress photo gallery plugin: <a href='http://wordpress-photo-gallery.com/#gallery' title='Responsive WordPress Photo Gallery'>ReFlex Gallery</a> - ReFlex Gallery Pro is a fully responsive WordPress image gallery plugin that is actually two galleries in one.
 
 Try <a href='http://wordpress-photo-gallery.com/#gallery' title='Responsive WordPress Photo Gallery'>ReFlex Gallery Pro</a>
 
-Pro gallery plugin features include:
+= Pro gallery plugin features =
 
 - Multiple image uploads to quickly populate your galleries
 - Improved admin panel for easier gallery and image navigation
 
 <a href='http://wordpress-photo-gallery.com/' title='Responsive WordPress Photo Gallery'>Upgrade to ReFlex Gallery Pro</a>
 
+= WordPress Plugins =
 Be sure to also check out these other plugins for WordPress: <a href='http://wordpress.org/extend/plugins/wp-easy-gallery/'>WP Easy Gallery</a>, <a href='http://labs.hahncreativegroup.com/wordpress-gallery-plugin/' title='WordPress Image Gallery Plugin'>WP Easy Gallery Pro</a>, <a href='http://www.wordpress-photo-gallery.com' title='Responsive WordPress Photo Gallery'>ReFlex Gallery Pro</a>, <a href='http://wordpress-photo-gallery.com/reflex-gallery-premium/'>ReFlex Gallery Premium</a>, <a href='http://labs.hahncreativegroup.com/paypal-for-wordpress/' title='PayPal for WordPress'>Custom Post Donations Pro</a>, <a href='http://wordpress.org/extend/plugins/custom-post-donations/'>Custom Post Donations</a>, <a href='http://wordpress.org/extend/plugins/wp-translate/'>WP Translate</a>, <a href="http://codecanyon.net/item/jquery-email-obfuscate-plugin/721738/?ref=HahnCreativeGroup">Email Obfuscate</a> and <a href='http://wordpress.org/extend/plugins/prosperity/'>Prosperity</a>.
 
-### License Notice
+**Gallery Plugin License Notice**
 
 The developer of this plugin is not in any way affiliated to the developer of the prettyPhoto jQuery plugin.
 prettyPhoto is being developed by [Stephane Caron](http://www.no-margin-for-errors.com) and licensed under the [GPLv2 license](http://www.gnu.org/licenses/gpl-2.0.html). As the developer states, prettyPhoto is "totally free to use (...) in all projects, even commercial ones".
