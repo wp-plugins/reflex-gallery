@@ -164,7 +164,7 @@ class qqFileUploader {
 }
 
 // list of valid extensions, ex. array("jpeg", "xml", "bmp")
-$allowedExtensions = array();
+$allowedExtensions = array("jpeg", "gif", "png");
 // max file size in bytes
 $sizeLimit = ini_get('upload_max_filesize') * 1024 * 1024;
 
