@@ -1,14 +1,14 @@
 <?php
 /**
  * @package ReFlex_Gallery
- * @version 3.0.1
+ * @version 3.1
  */
 /*
 Plugin Name: ReFlex Gallery
 Plugin URI: http://wordpress-photo-gallery.com/
 Description: Wordpress Plugin for creating responsive image galleries. By: HahnCreativeGroup
 Author: HahnCreativeGroup
-Version: 3.0.1
+Version: 3.1
 Author URI: http://labs.hahncreativegroup.com/
 */
 if (!class_exists("ReFlex_Gallery")) {
@@ -226,5 +226,19 @@ if (!class_exists("ReFlex_Gallery")) {
 if (class_exists("ReFlex_Gallery")) {
     global $ob_ReFlex_Gallery;
 	$ob_ReFlex_Gallery = new ReFlex_Gallery();
+	
+	add_action( 'init', 'rfg_code_button' );
+function rfg_code_button() {
+    add_filter( "mce_external_plugins", "rfg_code_add_button" );
+    add_filter( 'mce_buttons', 'rfg_code_register_button' );
+}
+function rfg_code_add_button( $plugin_array ) {
+    $plugin_array['rfgbutton'] = $dir = plugins_url( 'admin/scripts/shortcode.js', __FILE__ );
+    return $plugin_array;
+}
+function rfg_code_register_button( $buttons ) {
+    array_push( $buttons, 'rfgselector' );
+    return $buttons;
+}
 }
 ?>
