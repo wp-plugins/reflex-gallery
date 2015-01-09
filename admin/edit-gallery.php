@@ -1,8 +1,6 @@
 <?php
 if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); }
 
-$galleryResults = $this->reflexdb->getGalleries();
-
 //Select gallery
 if(isset($_POST['select_gallery']) || isset($_POST['galleryId'])) {
 	if(check_admin_referer('reflex_gallery','reflex_gallery')) {
@@ -33,6 +31,9 @@ if(isset($_POST['easy_gallery_edit']))
 	  }
 	}
 }
+
+$galleryResults = $this->reflexdb->getGalleries();
+
 ?>
 <div class='wrap'>
 <h2>ReFlex Gallery - <?php _e('Edit Galleries', 'reflex-gallery'); ?></h2>

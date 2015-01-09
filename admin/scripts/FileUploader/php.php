@@ -9,7 +9,20 @@ class qqUploadedFileXhr {
      * @return boolean TRUE on success
      */
     function save($path) {    
-                
+        $input = fopen("php://input", "r");
+        $temp = tmpfile();		
+        $realSize = stream_copy_to_stream($input, $temp);
+        fclose($input);
+        
+        if ($realSize != $this->getSize()){            
+            return false;
+        }
+        
+        $target = fopen($path, "w");        
+        fseek($temp, 0, SEEK_SET);
+        stream_copy_to_stream($temp, $target);
+        fclose($target);
+        
         return true;
     }
     function getName() {
@@ -33,7 +46,9 @@ class qqUploadedFileForm {
      * @return boolean TRUE on success
      */
     function save($path) {
-        
+        if(!move_uploaded_file($_FILES['qqfile']['tmp_name'], $path)){
+            return false;
+        }
         return true;
     }
     function getName() {
@@ -149,7 +164,7 @@ class qqFileUploader {
 }
 
 // list of valid extensions, ex. array("jpeg", "xml", "bmp")
-$allowedExtensions = array("jpeg", "gif", "png");
+$allowedExtensions = array();
 // max file size in bytes
 $sizeLimit = ini_get('upload_max_filesize') * 1024 * 1024;
 
