@@ -95,109 +95,109 @@ Keywords: <a href='http://labs.hahncreativegroup.com/wordpress-gallery-plugin/' 
 
 == Changelog ==
 
-**Jan. 8, 2015 - v3.1.3**
+**v3.1.3**
 
 * Fixed issue of gallery info not updating on Edit Gallery page
 * Additional security fixes
 
-**Aug. 7, 2014 - v3.1.2**
+**v3.1.2**
 
 * Verified WordPress 3.9.2 compatibility
 
-**Aug. 5, 2014 - v3.1.1**
+**v3.1.1**
 
 * i18n update
 
-**July 14, 2014 - v3.1**
+**v3.1**
 
 * Added short code button to editor window
 * Tightening of security around previous security exploit
 
-**June 17, 2014 - v3.0.1**
+**v3.0.1**
 
 * Fixes security exploit
 
-**May 31, 2014 - v3.0**
+**v3.0**
 
 * Table paging results per page now retains state when saving image changes
 * Table paging now retains which page of results you were on when saving image changes
 * Ability to select fade style for thumbnail
 
-**May 7, 2014 - v2.5**
+**v2.5**
 
 * Added option to turn thumbnail dropshadow on/off.
 
-**Apr. 23, 2014 - v2.4**
+**v2.4**
 
 * replaced deprecated mysql_* functions for WordPress 3.9 compatibility.
 
-**Jan. 24, 2014 - v2.3**
+**v2.3**
 
 * Enhanced thumbnail styling (CSS added)
 
-**Nov. 29, 2013 - v2.2**
+**v2.2**
 
 * Changed how image info edits are saved to allow all edits to be saved in a single action.
 
-**Oct. 1, 2013 - v2.1**
+**v2.1**
 
 * Fixed directory naming issue on add-images page that caused problems with prettyPhoto scripts in some hosting environments.
 
-**Sept. 3, 2013 - v2.0**
+**v2.0**
 
 * Added ability to hide prettyPhoto gallery overlay
 * Added ability to hide prettyPhoto social sharing buttons
 * Added ability to add custom thumbnail styles
 
-**June 13, 2013 - v1.4.8**
+**v1.4.8**
 
 * Updated prettyPhoto (v3.1.5) and FlexSlider (v2.1) scripts
 * Additional work for I18n
 
-**May 29, 2013 - v1.4.7**
+**v1.4.7**
 
 * Improved form submission security
 
-**May 4, 2013 - v1.4.6**
+**v1.4.6**
 
 * Imported jQuery Migrate script
 
-**May 2, 2013 - v1.4.5**
+**v1.4.5**
 
 * Fixed bug causing SSL and Mixed Content Warnings
 
-**Mar. 15, 2013 - v1.4.4**
+**v1.4.4**
 
 * Update to prettyPhoto stylesheet to correct arrow alignment and mini-gallery spilling over popup
 
-**Mar. 11, 2013 - v1.4.3**
+**v1.4.3**
 
 * Sanitize outputs to protect against cross-site scripting
 
-**Feb. 27, 2013 - v1.4.2**
+**v1.4.2**
 
 * Added jQuery Migrate script for jQuery 1.9.1 compatibility
 
-**Jan. 13, 2013 - v1.4.1**
+**v1.4.1**
 
 * Fixed additional directory naming issue that caused problems with prettyPhoto styles in some hosting environments.
 
-**Jan. 1, 2013 - v1.4**
+**v1.4**
 
 * Fixed directory naming issue that caused problems with prettyPhoto scripts in some hosting environments.
 
-**Dec. 11, 2012 - v1.3**
+**v1.3**
 
 * Fixed issue causing gallery to jump when clicked on.
 
-**Nov. 11, 2012 - v1.2**
+**v1.2**
 
 * Fixed bug causing empty images to be added to a gallery when switching galleries.
 
-**Nov. 4, 2012 - v1.1**
+**v1.1**
 
 * Fixed bug that was preventing images from being properly deleted.
 
-**Sept. 25, 2012 - v1.0**
+**v1.0**
 
 * Initial release.
